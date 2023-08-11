@@ -8,4 +8,28 @@
     border-radius: 20px;
     margin-right: 20px;
 }
+#hero {
+    height: 70vh;
+    background-image: url('sam.png');
 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 83%;
+    background-image: linear-gradient(to right, black, rgb(78, 78, 78), black);
+    z-index: -1;
+}
+#hero .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
