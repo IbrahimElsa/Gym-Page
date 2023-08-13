@@ -10,7 +10,7 @@
 }
 #hero {
     height: 70vh;
-    background-image: url('sam.png');
+    background-image: url('pictures/sam.png');
 
     background-size: contain;
     background-repeat: no-repeat;
