@@ -39,3 +39,13 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.product-image {
+    max-height: 1000px; /* Adjust this value as you see fit */
+    object-fit: cover; /* Ensures the image is resized properly */
+    margin-bottom: 30px; /* Adds some space below the image */
+}
+
+.product-details {
+    padding-top: 20px; /* Adds some space at the top for better alignment */
+}
