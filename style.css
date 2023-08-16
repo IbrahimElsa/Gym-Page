@@ -41,11 +41,23 @@
 }
 
 .product-image {
-    max-height: 1000px; /* Adjust this value as you see fit */
-    object-fit: cover; /* Ensures the image is resized properly */
-    margin-bottom: 30px; /* Adds some space below the image */
+    max-width: 100%;
+    height: auto; 
+    display: block;
+    margin: 0 auto;
+    zoom:1.3
 }
 
+
 .product-details {
-    padding-top: 20px; /* Adds some space at the top for better alignment */
+    padding-top: 20px;
 }
+.product-section {
+    min-height: 80vh;
+    padding: 50px 0;
+}
+
+.product-description {
+    margin-top: 30px;
+}
+
