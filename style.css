@@ -45,12 +45,18 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-.product-section{
+
+#featured{
     min-height: 100vh;
     padding-bottom: 50px;
     overflow: hidden;
+    background-color: white;
+}
+.feature{
+    margin-bottom: 30px;
 }
 .card {
+    background-color: rgb(220, 220, 220);
     height: 300px; 
     display: flex;
     align-items: center;
