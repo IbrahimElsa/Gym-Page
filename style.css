@@ -2,6 +2,9 @@
     margin-right: 10px;
     font-family: 'Bebas Neue', sans-serif;
 }
+.nav-txt:hover {
+    text-decoration: underline;
+}
 #logo {
     height: 100px;
     width: 100px;
@@ -9,21 +12,23 @@
     margin-right: 20px;
 }
 #hero {
+    position: relative;
     height: 70vh;
-    background-image: url('pictures/sam.png');
+    background-image: url('pictures/sam.PNG');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
-#hero::after {
+#hero::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 83%;
+    right: 0;
+    bottom: 0;
     background-image: linear-gradient(to right, black, rgb(78, 78, 78), black);
     z-index: -1;
+    pointer-events: none;  /* This ensures the gradient doesn't interfere with any interactivity on the hero section */
 }
 #hero .container {
     height: 100%;
@@ -39,7 +44,11 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
 .product-image {
     max-width: 100%;
     height: auto; 
