@@ -101,4 +101,13 @@
 .product-description {
     margin-top: 30px;
 }
-
+#you-may-like{
+    margin: 30px;
+    text-align: center;
+}
+.items-you-may-like{
+        min-height: 100vh;
+        padding-bottom: 50px;
+        overflow: hidden;
+        background-color: white;
+}
