@@ -1,3 +1,4 @@
+/* main page */
 .nav-txt{
     margin-right: 10px;
     font-family: 'Bebas Neue', sans-serif;
@@ -28,7 +29,7 @@
     bottom: 0;
     background-image: linear-gradient(to right, black, rgb(78, 78, 78), black);
     z-index: -1;
-    pointer-events: none;  /* This ensures the gradient doesn't interfere with any interactivity on the hero section */
+    pointer-events: none;
 }
 #hero .container {
     height: 100%;
@@ -44,6 +45,28 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+.product-section{
+    min-height: 100vh;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+.card {
+    height: 300px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card-img-top {
+    max-width: 100%;
+    max-height: 100%; 
+    object-fit: contain;
+}
+
+
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -58,6 +81,8 @@
 }
 
 
+
+/* product sections */
 .product-details {
     padding-top: 20px;
 }
