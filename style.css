@@ -12,32 +12,22 @@
     border-radius: 20px;
     margin-right: 20px;
 }
-#hero {
-    position: relative;
-    height: 70vh;
-    background-image: url('pictures/sam.PNG');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-#hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(to right, black, rgb(78, 78, 78), black);
-    z-index: -1;
-    pointer-events: none;
-}
-#hero .container {
-    height: 100%;
+.hero-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* vertically center the content */
+    height: 75vh; /* or any height method from above */
 }
+.featured-section, 
+.gear-section, 
+.sale-section, 
+.apparel-section {
+    display: flex;
+    flex-direction: column;  /* Stack children vertically */
+    justify-content: center;  /* Vertically center content */
+    height: 100%;  /* Take up full height of parent */
+}
+
 #about {
     height: 65vh;
     background-image: url('pictures/summer_restock.webp');
@@ -110,4 +100,29 @@
         padding-bottom: 50px;
         overflow: hidden;
         background-color: white;
+}
+
+.hero-section {
+    padding: 50px 0;
+    background-color: #f4f4f4;  /* A light gray background */
+}
+
+.featured-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;  /* Rounded corners */
+}
+
+/* Dividers for Gear, Apparel, Sale sections */
+.gear-section,
+.apparel-section,
+.sale-section {
+    background-color: #fff;
+    margin-bottom: 20px;  /* Spacing between sections */
+    padding: 10px;
+    border-radius: 10px;  /* Rounded corners */
+}
+
+.sale-section {
+    margin-bottom: 0;  /* Remove margin for the last section */
 }
