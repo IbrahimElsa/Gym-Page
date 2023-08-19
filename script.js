@@ -5,3 +5,6 @@ AOS.init({
     delay: 200,  
   });
 
+    function changeImage(newSrc) {
+        document.getElementById('mainImage').src = newSrc;
+    }

@@ -36,49 +36,61 @@
     <section class="py-5 product-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <img src="pictures/lever_bl.webp" class="img-fluid product-image just" alt="10MM Lever belt">
-                </div>
-                <div class="col-md-6 product-details">
-                    <h2>10MM Lever belt</h2>
-                    <strong>Price: $129.95</strong>
-
-                    <div class="row mt-3">
-                        <div class="col-md-6">
-                            <label for="size">Size:</label>
-                            <select class="form-select" id="size">
-                                <option value="small">Small</option>
-                                <option value="medium">Medium</option>
-                                <option value="large">Large</option>
-                                <option value="xlarge">X-Large</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="color">Color:</label>
-                            <select class="form-select" id="color">
-                                <option value="black">Black</option>
-                                <option value="blue">Blue</option>
-                                <option value="red">Red</option>
-                                <option value="green">Green</option>
-                            </select>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Main Product Image -->
+                        <img src="pictures/lever_bl.webp" class="img-fluid product-image just" alt="10MM Lever belt" id="mainImage">
+                
+                        <!-- Thumbnails Carousel -->
+                        <div id="thumbnails" class="mt-3">
+                            <img src="pictures/lever_bl.webp" class="img-fluid thumbnail" alt="Thumbnail 1" onclick="changeImage('pictures/lever_bl.webp')">
+                            <img src="pictures/belt_colors.webp" class="img-fluid thumbnail" alt="Thumbnail 2" onclick="changeImage('pictures/belt_colors.webp')">
+                            <!-- Add more thumbnails as needed -->
                         </div>
                     </div>
-                    
-                    
-                    <div class="product-description">
-                        <ul>
-                            <li>High-quality 10MM Lever belt</li>
-                            <li>Designed for serious fitness enthusiasts</li>
-                            <li>Provides optimal support and comfort</li>
-                            <li>Perfect for heavy lifting</li>
-                        </ul>
-                    </div>
-
-                    <div class="mt-3">
-                        <button class="btn btn-primary add-to">Add to Cart</button>
-
+                    <div class="col-md-6 product-details">
+                        <h2>10MM Lever belt</h2>
+                        <strong>Price: $129.95</strong>
+    
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label for="size">Size:</label>
+                                <select class="form-select" id="size">
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                    <option value="xlarge">X-Large</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="color">Color:</label>
+                                <select class="form-select" id="color">
+                                    <option value="black">Black</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="red">Red</option>
+                                    <option value="green">Green</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="product-description">
+                            <ul>
+                                <li>High-quality 10MM Lever belt</li>
+                                <li>Designed for serious fitness enthusiasts</li>
+                                <li>Provides optimal support and comfort</li>
+                                <li>Perfect for heavy lifting</li>
+                            </ul>
+                        </div>
+    
+                        <div class="mt-3">
+                            <button class="btn btn-primary add-to">Add to Cart</button>
+    
+                        </div>
                     </div>
                 </div>
+                
+                
             </div>
         </div>
     </section>
