@@ -5,12 +5,23 @@ AOS.init({
     delay: 200,  
   });
 
-function changeImage(newSrc) {
+  function changeImage(newSrc, clickedThumbnail) {
     document.getElementById('mainImage').src = newSrc;
+
+    // Remove the active class from all thumbnails
+    var thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach(function(thumb) {
+        thumb.classList.remove('thumbnail-active');
+    });
+
+    // Add the active class to the clicked thumbnail
+    clickedThumbnail.classList.add('thumbnail-active');
 }
+
 $(document).ready(function(){
-  $('#mainImage').elevateZoom({
-      cursor: 'crosshair',
-      zoomType: "inner"
+  new Drift(document.querySelector('#mainImage'), {
+      paneContainer: document.body,
+      inlinePane: false
   });
 });
+
