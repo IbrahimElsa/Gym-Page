@@ -1,6 +1,6 @@
 /* main page */
 body, h1, h2, h3, h4, h5, h6, p, a, li, button, input, textarea, .navbar, .btn {
-    font-family: 'Bebas Neue', sans-serif !important;
+    font-family: 'Nunito', sans-serif !important;
 }
 
 body {
@@ -77,6 +77,11 @@ body {
     .card {
         width: 100%;
         margin: 0 auto;
+    }
+}
+@media (max-width: 576px) { /* targeting extra small screens */
+    .card-container {
+        margin-bottom: 80px; /* adjust as needed */
     }
 }
 .card-img-top {
