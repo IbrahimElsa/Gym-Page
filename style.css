@@ -6,6 +6,19 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, input, textarea, .navbar, .btn {
 body {
     font-family: 'Bebas Neue', sans-serif;
 }
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+.navbar-scrolled {
+    background: white;
+}
+
 .nav-txt{
     margin-right: 10px;
     font-family: 'Bebas Neue', sans-serif;
@@ -20,30 +33,22 @@ body {
     margin-right: 20px;
 }
 #hero {
-    position: relative;
-    height: 70vh;
-    background-image: url('pictures/sam.PNG');
-    background-size: contain;
-    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('pictures/hero-img.jpg');
+    background-size: cover;
     background-position: center;
+    position: relative;
 }
-#hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(to right, black, rgb(78, 78, 78), black);
-    z-index: -1;
-    pointer-events: none;
-}
+
 #hero .container {
+    font-weight: 500;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: black;
 }
 #about {
     height: 65vh;
