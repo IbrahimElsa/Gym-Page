@@ -52,7 +52,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
-
+@media (max-width: 1200px) {
+    #about {
+        display: none;
+    }
+}
 #featured{
     min-height: 100vh;
     padding-bottom: 50px;
