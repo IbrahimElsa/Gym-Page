@@ -18,12 +18,26 @@ AOS.init({
     clickedThumbnail.classList.add('thumbnail-active');
 }
 
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 50) { // Adjust the value as needed
-      navbar.classList.add('navbar-scrolled');
-  } else {
-      navbar.classList.remove('navbar-scrolled');
-  }
+var modal = document.getElementById("imageModal");
+var modalImg = document.getElementById("modalImage");
+var captionText = document.getElementById("caption");
+
+document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'IMG' && e.target.id !== 'modalImage') {
+        modal.style.display = "block";
+        modalImg.src = e.target.src;
+        captionText.innerHTML = e.target.alt;
+    }
 });
 
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() { 
+    modal.style.display = "none";
+}
+
+modal.onclick = function() {
+    modal.style.display = "none";
+}
+
+var panZoom = panzoom(document.querySelector('#modalImage'));
