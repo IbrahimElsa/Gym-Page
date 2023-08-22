@@ -17,11 +17,3 @@ AOS.init({
     // Add the active class to the clicked thumbnail
     clickedThumbnail.classList.add('thumbnail-active');
 }
-
-$(document).ready(function(){
-  new Drift(document.querySelector('#mainImage'), {
-      paneContainer: document.body,
-      inlinePane: false
-  });
-});
-
