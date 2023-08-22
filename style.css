@@ -14,9 +14,15 @@ body {
     background: transparent;
     transition: background 0.3s ease;
 }
+.navbar, .navbar .container-fluid {
+    background: transparent !important;
+}
 
 .navbar-scrolled {
     background: white;
+}
+.navbar .nav-link {
+    color: black;  // or any other color that contrasts with your hero image
 }
 
 .nav-txt{
