@@ -18,26 +18,3 @@ AOS.init({
     clickedThumbnail.classList.add('thumbnail-active');
 }
 
-var modal = document.getElementById("imageModal");
-var modalImg = document.getElementById("modalImage");
-var captionText = document.getElementById("caption");
-
-document.addEventListener('click', function(e) {
-    if (e.target.tagName === 'IMG' && e.target.id !== 'modalImage') {
-        modal.style.display = "block";
-        modalImg.src = e.target.src;
-        captionText.innerHTML = e.target.alt;
-    }
-});
-
-var span = document.getElementsByClassName("close")[0];
-
-span.onclick = function() { 
-    modal.style.display = "none";
-}
-
-modal.onclick = function() {
-    modal.style.display = "none";
-}
-
-var panZoom = panzoom(document.querySelector('#modalImage'));
