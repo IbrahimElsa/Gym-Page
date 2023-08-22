@@ -19,17 +19,5 @@ AOS.init({
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  var zoomImage = document.getElementById('mainImage');
-
-  zoomImage.addEventListener('mousemove', function(e) {
-      var x = e.offsetX;
-      var y = e.offsetY;
-      var xPercent = (x / this.offsetWidth) * 100;
-      var yPercent = (y / this.offsetHeight) * 100;
-      this.style.backgroundPosition = xPercent + '% ' + yPercent + '%';
-  });
-
-  zoomImage.addEventListener('mouseleave', function() {
-      this.style.backgroundPosition = 'center';
-  });
+  zoom.setup();
 });
