@@ -7,13 +7,10 @@ body {
     font-family: 'Bebas Neue', sans-serif;
 }
 .navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     background: transparent;
     transition: background 0.3s ease;
-    padding-top: 200px;
+    z-index: 1000;
+    position: absolute;
 }
 .navbar, .navbar .container-fluid {
     background: transparent !important;
@@ -23,7 +20,7 @@ body {
     background: white;
 }
 .navbar .nav-link {
-    color: black;  /* or any other color that contrasts with your hero image */
+    color: white;  /* or any other color that contrasts with your hero image */
 }
 
 .nav-txt{
@@ -40,6 +37,7 @@ body {
     margin-right: 20px;
 }
 #hero {
+    margin-top: 0;
     width: 100vw;
     height: 100vh;
     background-image: url('pictures/hero.webp');
@@ -88,8 +86,6 @@ body {
     margin-bottom: 30px;
 }
 .card {
-    background-color: rgb(220, 220, 220);
-    /* Remove fixed height */
     display: flex;
     align-items: center;
     justify-content: center;
