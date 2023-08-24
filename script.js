@@ -18,11 +18,12 @@ AOS.init({
     clickedThumbnail.classList.add('thumbnail-active');
 }
 
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 50) {  // You can adjust the value '50' based on when you want the navbar to change color
-      navbar.classList.add('navbar-scrolled');
+
+
+$(document).on('scroll', function() {
+  if ($(window).scrollTop() > 50) {
+      $('.navbar').addClass('navbar-scrolled');
   } else {
-      navbar.classList.remove('navbar-scrolled');
+      $('.navbar').removeClass('navbar-scrolled');
   }
 });

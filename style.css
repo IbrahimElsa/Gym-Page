@@ -10,26 +10,33 @@ body {
     background: transparent;
     transition: background 0.3s ease;
     z-index: 1000;
-    position: absolute;
 }
+
 .navbar, .navbar .container-fluid {
     background: transparent !important;
 }
 
-.navbar-scrolled {
-    background: white;
-}
-.navbar .nav-link {
-    color: white;  /* or any other color that contrasts with your hero image */
+.navbar .nav-link, .navbar .nav-txt {
+    color: white;
 }
 
 .nav-txt{
     margin-right: 10px;
     font-family: 'Bebas Neue', sans-serif;
 }
+
 .nav-txt:hover {
     text-decoration: underline;
 }
+
+.navbar-scrolled {
+    background: white !important;
+}
+
+.navbar-scrolled .nav-link, .navbar-scrolled .nav-txt {
+    color: black;
+}
+
 #logo {
     height: 100px;
     width: 100px;
