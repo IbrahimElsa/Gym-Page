@@ -22,8 +22,9 @@ AOS.init({
 
 $(document).on('scroll', function() {
   if ($(window).scrollTop() > 50) {
-      $('.navbar').addClass('navbar-scrolled');
+      $('.transparent-nav').addClass('navbar-scrolled');
   } else {
-      $('.navbar').removeClass('navbar-scrolled');
+      $('.transparent-nav').removeClass('navbar-scrolled');
   }
 });
+

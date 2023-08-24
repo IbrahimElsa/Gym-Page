@@ -10,17 +10,28 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, input, textarea, .navbar, .btn {
 body {
     font-family: 'Bebas Neue', sans-serif;
 }
-.navbar {
+.transparent-nav {
     background: transparent;
     transition: background 0.3s ease;
     z-index: 1000;
 }
-.navbar, .navbar .container-fluid {
+
+.transparent-nav, .transparent-nav .container-fluid {
     background: transparent !important;
 }
-.navbar .nav-link, .navbar .nav-txt {
+
+.transparent-nav .nav-link, .transparent-nav .nav-txt {
     color: white;
 }
+
+.transparent-nav.navbar-scrolled {
+    background: white !important;
+}
+
+.transparent-nav.navbar-scrolled .nav-link, .transparent-nav.navbar-scrolled .nav-txt {
+    color: black;
+}
+
 .nav-txt{
     margin-right: 10px;
     font-family: 'Bebas Neue', sans-serif;
@@ -30,13 +41,7 @@ body {
     text-decoration: underline;
 }
 
-.navbar-scrolled {
-    background: white !important;
-}
 
-.navbar-scrolled .nav-link, .navbar-scrolled .nav-txt {
-    color: black;
-}
 
 #logo {
     height: 100px;
