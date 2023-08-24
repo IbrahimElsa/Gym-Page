@@ -1,4 +1,8 @@
 /* main page */
+/* *{
+    border: 1px red solid;
+
+} */
 body, h1, h2, h3, h4, h5, h6, p, a, li, button, input, textarea, .navbar, .btn {
     font-family: 'Nunito', sans-serif !important;
 }
@@ -11,15 +15,12 @@ body {
     transition: background 0.3s ease;
     z-index: 1000;
 }
-
 .navbar, .navbar .container-fluid {
     background: transparent !important;
 }
-
 .navbar .nav-link, .navbar .nav-txt {
     color: white;
 }
-
 .nav-txt{
     margin-right: 10px;
     font-family: 'Bebas Neue', sans-serif;
@@ -40,17 +41,15 @@ body {
 #logo {
     height: 100px;
     width: 100px;
-    border-radius: 20px;
     margin-right: 20px;
 }
 #hero {
     margin-top: 0;
-    width: 100vw;
     height: 100vh;
     background-image: url('pictures/hero.webp');
     background-size: cover;
-    background-position: center;
     position: relative;
+    overflow-x:hidden;
 }
 
 #hero .container {
@@ -60,7 +59,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: white;
 }
 #about {
     height: 65vh;
