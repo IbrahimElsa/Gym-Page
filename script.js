@@ -18,8 +18,6 @@ AOS.init({
     clickedThumbnail.classList.add('thumbnail-active');
 }
 
-
-
 $(document).on('scroll', function() {
   if ($(window).scrollTop() > 50) {
       $('.transparent-nav').addClass('navbar-scrolled');
@@ -28,3 +26,9 @@ $(document).on('scroll', function() {
   }
 });
 
+$(document).ready(function(){
+  $("#mainImage").click(function(){
+      let imgSrc = $(this).attr("src");
+      $("#popupImage").attr("src", imgSrc);
+  });
+});
