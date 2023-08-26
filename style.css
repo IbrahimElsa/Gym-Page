@@ -133,9 +133,7 @@ body {
 
 
 /* product sections */
-.product-details {
-    padding-top: 20px;
-}
+
 .product-image {
     width: 100%;
     height: auto;
@@ -146,13 +144,11 @@ body {
 }
 
 .product-section {
-    min-height: 80vh;
+    min-height: 100vh;
     padding: 50px 0;
 }
 
-.product-description {
-    margin-top: 30px;
-}
+
 .product-description ul li {
     margin-bottom: 15px;
 }
