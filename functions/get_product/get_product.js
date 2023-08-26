@@ -1,6 +1,6 @@
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const { MongoClient } = require('mongodb');
-require('.env').config();
+require('dotenv').config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = 'GymDatabase'; // replace with your database name
