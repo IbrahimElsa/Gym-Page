@@ -45,6 +45,8 @@
                 <a href="#" class="btn btn-light btn-lg">Shop Now</a>
             </div>
         </section>
+        <button id="fetchData">Fetch Data</button>
+        <div id="result"></div>
         <section id="featured" class="py-5">
             <div class="container-fluid">
                 <h2 class="feature text-center fs-1">Featured Products</h2>
@@ -168,7 +170,22 @@
           </footer>
 
 
-    
+          <script>
+            $(document).ready(function() {
+                $('#fetchData').click(function() {
+                    $.ajax({
+                        url: '/.netlify/functions/call_get_product',
+                        method: 'GET',
+                        success: function(data) {
+                            $('#result').html(JSON.stringify(data));
+                        },
+                        error: function(error) {
+                            $('#result').html('Error fetching data.');
+                        }
+                    });
+                });
+            });
+        </script>
         <script src="script.js" async defer></script>
     </body>
 </html>
