@@ -1,5 +1,5 @@
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
-const { MongoClient } = require('mongodb');
+import { MongoClient } from 'mongodb';
 require('dotenv').config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -12,12 +12,12 @@ async function connectToDatabase(uri) {
     return cachedDb;
   }
   const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-  const db = await client.db(DB_NAME);
+  const db = client.db(DB_NAME);
   cachedDb = db;
   return db;
 }
 
-exports.handler = async (event, context) => {
+export async function handler(event, context) {
   try {
     const db = await connectToDatabase(MONGODB_URI);
     const collection = db.collection('products'); // replace with your collection name
@@ -28,9 +28,12 @@ exports.handler = async (event, context) => {
       body: JSON.stringify(data)
     };
   } catch (err) {
+    console.error("Error:", err.message); // This will log the error message in the function logs
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Failed fetching data' })
+      body: JSON.stringify({ message: 'Failed fetching data', error: err.message })
     };
   }
-};
+  
+  }
+
