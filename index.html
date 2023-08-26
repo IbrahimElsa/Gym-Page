@@ -174,7 +174,7 @@
             $(document).ready(function() {
                 $('#fetchData').click(function() {
                     $.ajax({
-                        url: '/.netlify/functions/call_get_product',
+                        url: '/.netlify/functions/get_product',
                         method: 'GET',
                         success: function(data) {
                             $('#result').html(JSON.stringify(data));
