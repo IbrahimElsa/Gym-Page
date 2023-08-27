@@ -20,7 +20,7 @@ body {
     background: transparent !important;
 }
 
-.transparent-nav .nav-link, .transparent-nav .nav-txt {
+.transparent-nav .nav-link, .transparent-nav .nav-txt, .cart {
     color: white;
 }
 
@@ -40,7 +40,9 @@ body {
 .nav-txt:hover {
     text-decoration: underline;
 }
-
+.cart{
+    margin-right: 10px;
+}
 
 
 #logo {
