@@ -195,24 +195,12 @@
         </script>
         <script async="" defer="" src="script.js"></script>
         <script>
-            // Function to replace the entire content of the page
-            function replaceContent(url) {
-              fetch(url)
-                .then(response => response.text())
-                .then(html => {
-                  document.documentElement.innerHTML = html;
-                })
-                .catch(error => {
-                  console.warn('Something went wrong.', error);
-                });
-            }
-          
             // Add click event listeners to all card elements
             document.addEventListener('DOMContentLoaded', function() {
               const cards = document.querySelectorAll('.card');
               cards.forEach(card => {
                 card.addEventListener('click', function() {
-                  replaceContent('leverbelt.html');
+                  window.location.href = 'leverbelt.html';
                 });
               });
             });
