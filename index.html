@@ -193,6 +193,30 @@
                 });
             });
         </script>
-        <script src="script.js" async defer></script>
+        <script async="" defer="" src="script.js"></script>
+        <div id="content-area"></div>
+        <script>
+        // Function to load content into the content area
+        function loadContent(url, contentAreaId) {
+            fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById(contentAreaId).innerHTML = html;
+            })
+            .catch(error => {
+                console.warn('Something went wrong.', error);
+            });
+        }
+
+        // Add click event listeners to all card elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+            card.addEventListener('click', function() {
+                loadContent('leverbelt.html', 'content-area');
+            });
+            });
+        });
+        </script>
     </body>
 </html>
