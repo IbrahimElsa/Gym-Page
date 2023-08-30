@@ -22,9 +22,11 @@ export async function handler(event, context) {
     console.log("Connecting to database..."); // Log step
     const db = await connectToDatabase(MONGODB_URI);
     console.log("Fetching data from collection..."); // Log step
-    const collection = db.collection('products');
+    const collection = db.collection('database');
     const data = await collection.find({}).toArray();
-  
+
+    console.log("Fetched Data:", data);
+    
     return {
       statusCode: 200,
       body: JSON.stringify(data)
