@@ -19,27 +19,23 @@ async function connectToDatabase(uri) {
 
 export async function handler(event, context) {
   try {
-    console.log("Connecting to database..."); // Log step
     const db = await connectToDatabase(MONGODB_URI);
-    console.log("Fetching data from collection..."); // Log step
     const collection = db.collection('database');
-    const data = await collection.find({}).toArray();
-
-    console.log("Fetched Data:", data);
+    const productId = event.queryStringParameters.id;
+    
+    const data = await collection.find({ "Name": productId }).toArray();
     
     return {
       statusCode: 200,
       body: JSON.stringify(data)
     };
   } catch (err) {
-    console.error("Error:", err.message); // Log error
     return {
       statusCode: 500,
       body: JSON.stringify({ message: 'Failed fetching data', error: err.message })
     };
   }
-  
-  
-  }
+}
+
   
 
