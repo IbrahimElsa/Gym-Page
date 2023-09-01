@@ -1,20 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Fetch data from server when the page loads
-// Fetching data (simplified example)
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get('id');
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
 
-fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`)
-    .then(response => response.json())
-    .then(data => {
-        // Assuming 'data' is an object containing your product's information
-        document.getElementById('product-title').textContent = data.Name;
-        document.getElementById('product-price').textContent = `Price: $${data.Price}`;
-        document.getElementById('product-description').innerHTML = data.Description;
-        // ... populate other elements ...
-    })
-    .catch(error => {
-        console.error('Failed to fetch product data', error);
-    });
+    console.log("Product ID:", productId);
 
+    if (productId === null) {
+        console.error("No product ID provided in the URL.");
+        return;
+    }
+
+    fetch(`https://your-actual-domain/.netlify/functions/get_product?id=${productId}`)
+        .then(response => response.json())
+        .then(data => {
+            const titleElement = document.getElementById('product-title');
+            const priceElement = document.getElementById('product-price');
+            const descriptionElement = document.getElementById('product-description');
+
+            // Debugging: Log the elements to make sure they are found
+            console.log('Title Element:', titleElement);
+            console.log('Price Element:', priceElement);
+            console.log('Description Element:', descriptionElement);
+
+            if (titleElement && priceElement && descriptionElement) {
+                titleElement.textContent = data.Name;
+                priceElement.textContent = `Price: $${data.Price}`;
+                descriptionElement.innerHTML = data.Description;
+            } else {
+                console.error("One of the elements could not be found.");
+            }
+        })
+        .catch(error => {
+            console.error('Failed to fetch product data', error);
+        });
 });
