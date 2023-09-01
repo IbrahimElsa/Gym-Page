@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 // require('dotenv').config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
-const DB_NAME = 'GymDatabase'; // replace with your database name
+const DB_NAME = 'GymDatabase'; 
 
 let cachedDb = null;
 

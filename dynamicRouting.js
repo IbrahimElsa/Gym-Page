@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
-fetch(`https://your-domain/.netlify/functions/get_product?id=${productId}`)
+fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`)
     .then(response => response.json())
     .then(data => {
         // Assuming 'data' is an object containing your product's information
