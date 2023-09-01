@@ -12,26 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`)
         .then(response => response.json())
         .then(data => {
-            console.log("Fetched data:", data);  // Add this line for debugging
-
-            const titleElement = document.getElementById('product-title');
-            const priceElement = document.getElementById('product-price');
-            const descriptionElement = document.getElementById('product-description');
-
-            // Debugging: Log the elements to make sure they are found
-            console.log('Title Element:', titleElement);
-            console.log('Price Element:', priceElement);
-            console.log('Description Element:', descriptionElement);
-
-            if (titleElement && priceElement && descriptionElement) {
-                titleElement.textContent = data.Name;
-                priceElement.textContent = `Price: $${data.Price}`;
-                descriptionElement.innerHTML = data.Description;
+            if (data && data.length > 0) {
+                const product = data[0];
+                titleElement.textContent = product.Name;
+                priceElement.textContent = `Price: $${product.Price}`;
+                descriptionElement.innerHTML = product.Description;
             } else {
-                console.error("One of the elements could not be found.");
+                console.error("No data found for this product ID.");
             }
         })
-        .catch(error => {
-            console.error('Failed to fetch product data', error);
-        });
+        
 });
