@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    fetch(`https://your-actual-domain/.netlify/functions/get_product?id=${productId}`)
+    fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`)
         .then(response => response.json())
         .then(data => {
             const titleElement = document.getElementById('product-title');
