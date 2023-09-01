@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`)
         .then(response => response.json())
         .then(data => {
+            console.log("Fetched data:", data);  // Add this line for debugging
+
             const titleElement = document.getElementById('product-title');
             const priceElement = document.getElementById('product-price');
             const descriptionElement = document.getElementById('product-description');
