@@ -21,17 +21,28 @@ export async function handler(event, context) {
   try {
     const db = await connectToDatabase(MONGODB_URI);
     const collection = db.collection('database');
-    const productId = event.queryStringParameters.id;
     
-    const data = await collection.find({ "Name": productId }).toArray();
+    // Fetch the unique identifier from the query string
+    const uniqueId = event.queryStringParameters.id;
+    
+    // Query the database using the unique ID
+    const data = await collection.find({ "_id.$oid": uniqueId }).toArray();
     
     return {
       statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify(data)
     };
   } catch (err) {
     return {
       statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify({ message: 'Failed fetching data', error: err.message })
     };
   }
