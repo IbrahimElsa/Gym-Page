@@ -1,3 +1,4 @@
+javascript
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
@@ -7,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const descriptionElement = document.getElementById('product-description');
     const sizeElement = document.getElementById('size');  
     const colorElement = document.getElementById('color');  
+    const mainImageElement = document.getElementById('mainImage');
+    const thumbnailsElement = document.getElementById('thumbnails');
 
     if (productId === null) {
         console.error("No product ID provided in the URL.");
@@ -37,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 // Populate Sizes
-                if (product.Sizes) {
-                    const sizes = product.Sizes.split(';');
+                if (product.size) {
+                    const sizes = product.size.split(';');
                     sizes.forEach(size => {
                         const option = document.createElement('option');
                         option.value = size.toLowerCase().trim();
@@ -50,8 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 // Populate Colors
-                if (product.Colors) {
-                    const colors = product.Colors.split(';');
+                if (product.color) {
+                    const colors = product.color.split(';');
                     colors.forEach(color => {
                         const option = document.createElement('option');
                         option.value = color.toLowerCase().trim();
@@ -60,6 +63,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 } else {
                     console.warn("Colors not available for this product.");
+                }
+
+                // Populate Main Image
+                if (product.MainImage) {
+                    mainImageElement.src = product.MainImage;
+                } else {
+                    console.warn("Main image not available for this product.");
+                }
+
+                // Populate Thumbnails
+                if (product.Thumbnails) {
+                    const thumbnails = product.Thumbnails.split(';');
+                    thumbnailsElement.innerHTML = '';  // Clear existing thumbnails
+                    thumbnails.forEach(thumbnail => {
+                        const img = document.createElement('img');
+                        img.src = thumbnail.trim();
+                        img.className = 'img-fluid thumbnail';
+                        img.alt = 'Thumbnail';
+                        img.onclick = function() { changeImage(thumbnail.trim(), this); };
+                        thumbnailsElement.appendChild(img);
+                    });
+                } else {
+                    console.warn("Thumbnails not available for this product.");
                 }
             } else {
                 console.error("No data found for this product ID.");
