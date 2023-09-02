@@ -12,7 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             if (data && data.length > 0) {
                 const product = data[0];

@@ -26,8 +26,9 @@ export async function handler(event, context) {
     const uniqueId = event.queryStringParameters.id;
     
     // Query the database using the unique ID
-    const data = await collection.find({ "_id.$oid": uniqueId }).toArray();
-    
+    const { ObjectId } = require('mongodb'); // Import ObjectId from the MongoDB driver
+    const data = await collection.find({ "_id": new ObjectId(uniqueId) }).toArray();
+
     return {
       statusCode: 200,
       headers: {
