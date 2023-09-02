@@ -19,15 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 titleElement.textContent = product.Name;
                 priceElement.textContent = `Price: $${product.Price}`;
                 
+                // Assuming product.Description is a string like "item1;item2;item3"
+                const descriptionItems = product.Description.split('\n'); // replace ';' with your actual delimiter
+
                 // Create an unordered list for the product description
                 const descriptionList = document.createElement('ul');
-                product.Description.forEach(item => {
+
+                descriptionItems.forEach(item => {
                     const listItem = document.createElement('li');
-                    listItem.textContent = item;
+                    listItem.textContent = item.trim();
                     descriptionList.appendChild(listItem);
                 });
 
-                // Clear out any previous content and append the new list
                 descriptionElement.innerHTML = '';
                 descriptionElement.appendChild(descriptionList);
             } else {
@@ -38,3 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Failed to fetch product:", err);
         });
 });
+
+
+
+
+
