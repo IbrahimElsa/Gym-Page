@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleElement = document.getElementById('product-title');
     const priceElement = document.getElementById('product-price');
     const descriptionElement = document.getElementById('product-description');
-    const sizeElement = document.getElementById('size');  // Assuming this is the ID of your size dropdown
-    const colorElement = document.getElementById('color');  // Assuming this is the ID of your color dropdown
+    const sizeElement = document.getElementById('size');  
+    const colorElement = document.getElementById('color');  
 
     if (productId === null) {
         console.error("No product ID provided in the URL.");
@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 // Populate Sizes
-                if (product.size) {
-                    const sizes = product.size.split(';');
+                if (product.Sizes) {
+                    const sizes = product.Sizes.split(';');
                     sizes.forEach(size => {
                         const option = document.createElement('option');
                         option.value = size.toLowerCase().trim();
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 // Populate Colors
-                if (product.color) {
-                    const colors = product.color.split(';');
+                if (product.Colors) {
+                    const colors = product.Colors.split(';');
                     colors.forEach(color => {
                         const option = document.createElement('option');
                         option.value = color.toLowerCase().trim();
