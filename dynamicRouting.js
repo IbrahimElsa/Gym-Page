@@ -12,18 +12,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error ${response.status}`);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             if (data && data.length > 0) {
                 const product = data[0];
                 titleElement.textContent = product.Name;
                 priceElement.textContent = `Price: $${product.Price}`;
-                descriptionElement.innerHTML = product.Description;
+                
+                // Create an unordered list for the product description
+                const descriptionList = document.createElement('ul');
+                product.Description.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = item;
+                    descriptionList.appendChild(listItem);
+                });
+
+                // Clear out any previous content and append the new list
+                descriptionElement.innerHTML = '';
+                descriptionElement.appendChild(descriptionList);
             } else {
                 console.error("No data found for this product ID.");
             }
