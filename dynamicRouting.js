@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleElement = document.getElementById('product-title');
     const priceElement = document.getElementById('product-price');
     const descriptionElement = document.getElementById('product-description');
-    const sizeElement = document.getElementById('size');
-    const colorElement = document.getElementById('color');
+    const sizeElement = document.getElementById('size');  // Assuming this is the ID of your size dropdown
+    const colorElement = document.getElementById('color');  // Assuming this is the ID of your color dropdown
 
     if (productId === null) {
         console.error("No product ID provided in the URL.");
@@ -21,35 +21,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 titleElement.textContent = product.Name;
                 priceElement.textContent = `Price: $${product.Price}`;
                 
-                // Populate product description
-                const descriptionItems = product.Description.split('\n');
-                const descriptionList = document.createElement('ul');
-                descriptionItems.forEach(item => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = item.trim();
-                    descriptionList.appendChild(listItem);
-                });
-                descriptionElement.innerHTML = '';
-                descriptionElement.appendChild(descriptionList);
+                // Populate Description
+                if (product.Description) {
+                    const descriptionItems = product.Description.split('\n');
+                    const descriptionList = document.createElement('ul');
+                    descriptionItems.forEach(item => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = item.trim();
+                        descriptionList.appendChild(listItem);
+                    });
+                    descriptionElement.innerHTML = '';
+                    descriptionElement.appendChild(descriptionList);
+                } else {
+                    console.warn("Description not available for this product.");
+                }
 
-                // Populate size dropdown
-                const sizes = product.Sizes.split(';');
-                sizes.forEach(size => {
-                    const option = document.createElement('option');
-                    option.value = size.toLowerCase().trim();
-                    option.textContent = size.trim();
-                    sizeElement.appendChild(option);
-                });
+                // Populate Sizes
+                if (product.size) {
+                    const sizes = product.size.split(';');
+                    sizes.forEach(size => {
+                        const option = document.createElement('option');
+                        option.value = size.toLowerCase().trim();
+                        option.textContent = size.trim();
+                        sizeElement.appendChild(option);
+                    });
+                } else {
+                    console.warn("Sizes not available for this product.");
+                }
 
-                // Populate color dropdown
-                const colors = product.Colors.split(';');
-                colors.forEach(color => {
-                    const option = document.createElement('option');
-                    option.value = color.toLowerCase().trim();
-                    option.textContent = color.trim();
-                    colorElement.appendChild(option);
-                });
-
+                // Populate Colors
+                if (product.color) {
+                    const colors = product.color.split(';');
+                    colors.forEach(color => {
+                        const option = document.createElement('option');
+                        option.value = color.toLowerCase().trim();
+                        option.textContent = color.trim();
+                        colorElement.appendChild(option);
+                    });
+                } else {
+                    console.warn("Colors not available for this product.");
+                }
             } else {
                 console.error("No data found for this product ID.");
             }
