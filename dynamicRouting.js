@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const titleElement = document.getElementById('product-title');
     const priceElement = document.getElementById('product-price');
     const descriptionElement = document.getElementById('product-description');
+    const sizeElement = document.getElementById('size');
+    const colorElement = document.getElementById('color');
 
     if (productId === null) {
         console.error("No product ID provided in the URL.");
@@ -19,20 +21,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 titleElement.textContent = product.Name;
                 priceElement.textContent = `Price: $${product.Price}`;
                 
-                // Assuming product.Description is a string like "item1;item2;item3"
-                const descriptionItems = product.Description.split('\n'); // replace ';' with your actual delimiter
-
-                // Create an unordered list for the product description
+                // Populate product description
+                const descriptionItems = product.Description.split('\n');
                 const descriptionList = document.createElement('ul');
-
                 descriptionItems.forEach(item => {
                     const listItem = document.createElement('li');
                     listItem.textContent = item.trim();
                     descriptionList.appendChild(listItem);
                 });
-
                 descriptionElement.innerHTML = '';
                 descriptionElement.appendChild(descriptionList);
+
+                // Populate size dropdown
+                const sizes = product.Sizes.split(';');
+                sizes.forEach(size => {
+                    const option = document.createElement('option');
+                    option.value = size.toLowerCase().trim();
+                    option.textContent = size.trim();
+                    sizeElement.appendChild(option);
+                });
+
+                // Populate color dropdown
+                const colors = product.Colors.split(';');
+                colors.forEach(color => {
+                    const option = document.createElement('option');
+                    option.value = color.toLowerCase().trim();
+                    option.textContent = color.trim();
+                    colorElement.appendChild(option);
+                });
+
             } else {
                 console.error("No data found for this product ID.");
             }
@@ -41,8 +58,3 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Failed to fetch product:", err);
         });
 });
-
-
-
-
-
