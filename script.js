@@ -34,86 +34,85 @@ $(document).ready(function(){
 });
 
 
-let cart = [];  // Initialize cart as an empty array
-const addToCartButton = document.getElementById('addToCartButton');  // Capture "Add to Cart" button by its id
+let cart = [];
+const addToCartButton = document.getElementById('addToCartButton');
 
 if (addToCartButton) {
-  addToCartButton.addEventListener('click', function() {
-    const selectedSize = document.getElementById('size').value;
-    const selectedColor = document.getElementById('color').value;
-    
-    const productToAdd = {
-      id: productId,  // Assuming you have productId from your existing code
-      name: document.getElementById('product-title').textContent,
-      price: parseFloat(document.getElementById('product-price').textContent.replace('Price: $', '')),
-      size: selectedSize,
-      color: selectedColor,
-      quantity: 1  // Initially set quantity to 1
-    };
+    addToCartButton.addEventListener('click', function () {
+        const selectedSize = document.getElementById('size').value;
+        const selectedColor = document.getElementById('color').value;
 
-    // Add to local cart and update cart on the server
-    addToLocalCart(productToAdd);
-    addToServerCart(productToAdd);
-  });
+        const productToAdd = {
+            // id: productId,  // Define productId appropriately
+            name: document.getElementById('product-title').textContent,
+            price: parseFloat(document.getElementById('product-price').textContent.replace('Price: $', '')),
+            size: selectedSize,
+            color: selectedColor,
+            quantity: 1,
+        };
+
+        addToLocalCart(productToAdd);
+        addToServerCart(productToAdd);
+    });
 }
 
-// Function to add product to local cart
 function addToLocalCart(product) {
-  const existingProduct = cart.find(p => p.id === product.id);
-  if (existingProduct) {
-    existingProduct.quantity++;
-  } else {
-    cart.push(product);
-  }
-  // Optionally: Update cart UI here
+    const existingProduct = cart.find(p => p.id === product.id);
+    if (existingProduct) {
+        existingProduct.quantity++;
+    } else {
+        cart.push(product);
+    }
 }
 
-// Function to update cart on the server via Netlify function
 function addToServerCart(product) {
-  fetch('functions/get_product/cart-handler.js', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(product)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.message);  // Log server response
-  });
+    fetch('functions/get_product/cart-handler.js', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => Promise.reject(text));
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data.message);
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
 }
 
-// Fetching cart from server (assuming you have this function on the server)
+// Fetching cart from server
 fetch('functions/get_product/cart-handler.js', {
-  method: 'GET'
+    method: 'GET'
 })
 .then(response => response.json())
 .then(data => {
-  cart = data;
-  updateCartUI();  // Assuming you have this function to update the cart UI
+    cart = data;
+    updateCartUI();
 });
 
-// Function to update the cart UI (Placeholder, you would fill this in)
 function updateCartUI() {
-  const cartListElement = document.getElementById('cartList'); // Reference to the cartList div
-  let cartHTML = '<ul>';
+    const cartListElement = document.getElementById('cartList');
+    let cartHTML = '<ul>';
 
-  // Loop through each item in the cart to generate HTML
-  cart.forEach((item) => {
-    cartHTML += `
-      <li>
-        ${item.name} - Size: ${item.size}, Color: ${item.color} <br>
-        Quantity: ${item.quantity}, Price: $${item.price.toFixed(2)}
-      </li>
-    `;
-  });
+    cart.forEach((item) => {
+        cartHTML += `
+          <li>
+            ${item.name} - Size: ${item.size}, Color: ${item.color} <br>
+            Quantity: ${item.quantity}, Price: $${item.price.toFixed(2)}
+          </li>
+        `;
+    });
 
-  cartHTML += '</ul>';
-  
-  // Update the cart UI
-  cartListElement.innerHTML = cartHTML;
-  
-  // Optionally, you could also update the total price
-  const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  cartListElement.innerHTML += `<p>Total Price: $${totalPrice.toFixed(2)}</p>`;
+    cartHTML += '</ul>';
+    cartListElement.innerHTML = cartHTML;
+
+    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    cartListElement.innerHTML += `<p>Total Price: $${totalPrice.toFixed(2)}</p>`;
 }

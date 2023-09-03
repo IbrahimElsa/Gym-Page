@@ -1,7 +1,7 @@
 let productId;  
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
+    productId = urlParams.get('id');
 
     // Existing elements
     const titleElement = document.getElementById('product-title');
