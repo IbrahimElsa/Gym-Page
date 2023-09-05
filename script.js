@@ -66,7 +66,7 @@ function addToLocalCart(product) {
 }
 
 function addToServerCart(product) {
-    fetch('functions/get_product/cart-handler.js', {
+    fetch('functions/cart-handler.js', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ function addToServerCart(product) {
 }
 
 // Fetching cart from server
-fetch('functions/get_product/cart-handler.js', {
+fetch('functions/cart-handler.js', {
     method: 'GET'
 })
 .then(response => response.json())
