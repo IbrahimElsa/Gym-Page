@@ -22,11 +22,9 @@ export async function handler(event, context) {
     const db = await connectToDatabase(MONGODB_URI);
     const collection = db.collection('database');
     
-    // Fetch the unique identifier from the query string
     const uniqueId = event.queryStringParameters.id;
     
-    // Query the database using the unique ID
-    const { ObjectId } = require('mongodb'); // Import ObjectId from the MongoDB driver
+    const { ObjectId } = require('mongodb'); 
     const data = await collection.find({ "_id": new ObjectId(uniqueId) }).toArray();
 
     return {
