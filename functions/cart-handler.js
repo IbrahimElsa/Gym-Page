@@ -19,37 +19,54 @@ async function connectToDatabase() {
 exports.handler = async (event, context) => {
   const db = await connectToDatabase();
 
-  if (event.httpMethod === 'POST') {
-    const cartItem = JSON.parse(event.body);
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    // ... other headers ...
+  };
 
-    try {
-      const cart = db.collection('cart');
-      await cart.insertOne(cartItem);
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ message: 'Item added to cart' }),
-      };
-    } catch (error) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ message: error.message }),
-      };
-    }
-  }
+  switch (event.httpMethod) {
+    case 'POST':
+      const cartItem = JSON.parse(event.body);
 
-  if (event.httpMethod === 'GET') {
-    try {
-      const cart = db.collection('cart');
-      const cartItems = await cart.find({}).toArray();
+      try {
+        const cart = db.collection('cart');
+        await cart.insertOne(cartItem);
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({ message: 'Item added to cart' }),
+        };
+      } catch (error) {
+        return {
+          statusCode: 500,
+          headers,
+          body: JSON.stringify({ message: error.message }),
+        };
+      }
+
+    case 'GET':
+      try {
+        const cart = db.collection('cart');
+        const cartItems = await cart.find({}).toArray();
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify(cartItems),
+        };
+      } catch (error) {
+        return {
+          statusCode: 500,
+          headers,
+          body: JSON.stringify({ message: error.message }),
+        };
+      }
+
+    default:
       return {
-        statusCode: 200,
-        body: JSON.stringify(cartItems),
+        statusCode: 405,
+        headers,
+        body: JSON.stringify({ message: 'Method Not Allowed' }),
       };
-    } catch (error) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ message: error.message }),
-      };
-    }
   }
 };
