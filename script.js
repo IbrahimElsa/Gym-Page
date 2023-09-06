@@ -27,88 +27,57 @@ $(document).ready(function(){
         let imgSrc = $(this).attr("src");
         $("#popupImage").attr("src", imgSrc);
     });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // Attach addToCart function to "Add to Cart" button
+    const addToCartButton = document.getElementById('addToCartButton');
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', function() {
+            // Fetch the product details you have. This is just an example.
+            const product = {
+                id: productId,
+                name: 'Product Name based on productId',
+                price: 10 // price based on productId
+            };
+
+            addToCart(product);
+            alert('Product added to cart');  // You can replace this with a better UI update
+        });
+    }
 });
 
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+// Function to add an item to the cart
+function addToCart(product) {
+  // Retrieve existing cart from local storage
+  let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-fetch('/functions/cart-handler', { method: 'GET' })
-    .then(response => response.json())
-    .then(data => {
-        cart = data;
-        updateCartUI();
-    });
+  // Add the new product to the cart
+  cart.push(product);
 
-const addToCartButton = document.getElementById('addToCartButton');
-
-if (addToCartButton) {
-    addToCartButton.addEventListener('click', function () {
-        // Fetch the product ID from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('id');
-
-        const selectedSize = document.getElementById('size').value;
-        const selectedColor = document.getElementById('color').value;
-
-        const productToAdd = {
-            id: productId,
-            name: document.getElementById('product-title').textContent,
-            price: parseFloat(document.getElementById('product-price').textContent.replace('Price: $', '')),
-            size: selectedSize,
-            color: selectedColor,
-            quantity: 1,
-        };
-
-        addToLocalCart(productToAdd);
-        addToServerCart(productToAdd);
-    });
+  // Save the updated cart back to local storage
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-
-function addToLocalCart(product) {
-    const existingProduct = cart.find(p => p.id === product.id);
-    if (existingProduct) {
-        existingProduct.quantity++;
-    } else {
-        cart.push(product);
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartUI();
+// Function to get all items from the cart
+function getCartItems() {
+  return JSON.parse(localStorage.getItem('cart') || '[]');
 }
 
-function addToServerCart(product) {
-    fetch('/functions/cart-handler', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(product),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-    })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-    });
+// Function to remove an item from the cart by id
+function removeFromCart(productId) {
+  // Retrieve existing cart from local storage
+  let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+  // Remove the product with the given id
+  const updatedCart = cart.filter(item => item.id !== productId);
+
+  // Save the updated cart back to local storage
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
 }
 
-function updateCartUI() {
-    const cartListElement = document.getElementById('cartList');
-    if (cartListElement) {
-        let cartHTML = '<ul>';
-        cart.forEach((item) => {
-            cartHTML += `
-            <li>
-                ${item.name} - Size: ${item.size}, Color: ${item.color} <br>
-                Quantity: ${item.quantity}, Price: $${item.price.toFixed(2)}
-            </li>
-            `;
-        });
-
-        cartHTML += '</ul>';
-        cartListElement.innerHTML = cartHTML;
-
-        const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        cartListElement.innerHTML += `<p>Total Price: $${totalPrice.toFixed(2)}</p>`;
-    }
+// Function to clear the entire cart
+function clearCart() {
+  localStorage.removeItem('cart');
 }
