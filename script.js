@@ -5,6 +5,12 @@ AOS.init({
     delay: 200,
 });
 
+// Function to update the cart count displayed
+function updateCartCount() {
+  const cart = getCartItems();
+  document.getElementById('cart-count').innerText = cart.length;
+}
+
 function changeImage(newSrc, clickedThumbnail) {
     document.getElementById('mainImage').src = newSrc;
     var thumbnails = document.querySelectorAll('.thumbnail');
@@ -23,6 +29,9 @@ $(document).on('scroll', function() {
 });
 
 $(document).ready(function(){
+    // Initialize cart count
+    updateCartCount();
+
     $("#mainImage").click(function(){
         let imgSrc = $(this).attr("src");
         $("#popupImage").attr("src", imgSrc);
@@ -50,14 +59,10 @@ $(document).ready(function(){
 
 // Function to add an item to the cart
 function addToCart(product) {
-  // Retrieve existing cart from local storage
   let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-  // Add the new product to the cart
   cart.push(product);
-
-  // Save the updated cart back to local storage
   localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();  // Update the cart count
 }
 
 // Function to get all items from the cart
@@ -67,17 +72,14 @@ function getCartItems() {
 
 // Function to remove an item from the cart by id
 function removeFromCart(productId) {
-  // Retrieve existing cart from local storage
   let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-  // Remove the product with the given id
   const updatedCart = cart.filter(item => item.id !== productId);
-
-  // Save the updated cart back to local storage
   localStorage.setItem('cart', JSON.stringify(updatedCart));
+  updateCartCount();  // Update the cart count
 }
 
 // Function to clear the entire cart
 function clearCart() {
   localStorage.removeItem('cart');
+  updateCartCount();  // Update the cart count
 }
