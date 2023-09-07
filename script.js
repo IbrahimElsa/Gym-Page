@@ -21,8 +21,12 @@ async function fetchProductDetails(productIds) {
 // Function to update the cart count displayed
 function updateCartCount() {
   const cart = getCartItems();
-  document.getElementById('cart-count').innerText = cart.length;
+  const cartCountElement = document.getElementById('cart-count');
+  if (cartCountElement) {
+    cartCountElement.innerText = cart.length;
+  }
 }
+
 
 // Function to change image on click
 function changeImage(newSrc, clickedThumbnail) {
