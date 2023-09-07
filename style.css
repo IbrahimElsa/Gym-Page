@@ -43,7 +43,46 @@ body {
 .cart{
     margin-right: 10px;
 }
+.cart-icon-white {
+    color: white;
+}
 
+.cart-icon-black {
+    color: black;
+}
+.slide-in-cart {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background: #fff;
+    overflow-y: auto;
+    transition: right 0.3s;
+    z-index: 1000;
+}
+  
+.slide-in-cart.show {
+    right: 0;
+}
+  
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+}
+  
+.close-cart {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+  
 
 #logo {
     height: 100px;

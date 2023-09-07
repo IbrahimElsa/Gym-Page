@@ -10,7 +10,7 @@ function updateCartCount() {
   const cart = getCartItems();
   document.getElementById('cart-count').innerText = cart.length;
 }
-
+// Changes picture on click
 function changeImage(newSrc, clickedThumbnail) {
     document.getElementById('mainImage').src = newSrc;
     var thumbnails = document.querySelectorAll('.thumbnail');
@@ -20,12 +20,43 @@ function changeImage(newSrc, clickedThumbnail) {
     clickedThumbnail.classList.add('thumbnail-active');
 }
 
+//Makes the navbar transparent/white on scroll
 $(document).on('scroll', function() {
     if ($(window).scrollTop() > 50) {
         $('.transparent-nav').addClass('navbar-scrolled');
+        $('.cart-icon').removeClass('cart-icon-white').addClass('cart-icon-black');
     } else {
         $('.transparent-nav').removeClass('navbar-scrolled');
+        $('.cart-icon').removeClass('cart-icon-black').addClass('cart-icon-white');
     }
+});
+
+// Function to toggle the slide-in cart
+function toggleCart() {
+    const cart = document.getElementById('slide-in-cart');
+    cart.classList.toggle('show');
+}
+
+$(document).ready(function(){
+    // Initialize cart count
+    updateCartCount();
+
+    // Attach event listeners related to the cart
+    document.querySelector('.cart').addEventListener('click', toggleCart);
+    document.getElementById('close-cart').addEventListener('click', toggleCart);
+
+    // Update cart items when the cart is shown
+    document.getElementById('slide-in-cart').addEventListener('transitionend', function() {
+        if (this.classList.contains('show')) {
+            const cartItems = getCartItems();
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = ''; // Clear existing items
+
+            cartItems.forEach(item => {
+                cartItemsDiv.innerHTML += `<div>${item.name} - $${item.price}</div>`;
+            });
+        }
+    });
 });
 
 $(document).ready(function(){

@@ -28,7 +28,7 @@
                     
 <!-- shopping cart -->
                     <a href="#shopping-cart" class="d-flex align-items-center order-md-5">
-                        <i class="cart bi bi-cart3 fs-5"></i>
+                        <i class="cart bi bi-cart3 fs-5 cart-icon"></i>
                         <span id="cart-count" class="ml-2">0</span>
                     </a>
 
@@ -175,6 +175,16 @@
               © 2023 Your Website Name
             </div>
           </footer>
+          
+          <div id="slide-in-cart" class="slide-in-cart">
+            <div class="cart-header">
+            <span>Your Cart</span>
+            <button id="close-cart" class="close-cart">&times;</button>
+            </div>
+            <div id="cart-items" class="cart-items">
+            <!-- Cart items will be inserted here -->
+            </div>
+        </div>
 
         <script src="script.js"></script>
         <script>

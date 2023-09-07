@@ -23,6 +23,10 @@
                 <a class="navbar-brand mx-auto" href="#">
                     <img src="pictures/logo_nobg_small.png" id="logo" alt="Fitness Equipment Store Logo">
                 </a>
+                <a href="#shopping-cart" class="d-flex align-items-center order-md-5">
+                    <i class="cart bi bi-cart3 fs-5 cart-icon-black"></i>
+                    <span id="cart-count" class="ml-2">0</span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -174,7 +178,18 @@
                 </div>
             </div>
         </div>
-                
+        
+        <!-- Slide-in Cart -->
+        <div id="slide-in-cart" class="slide-in-cart">
+            <div class="cart-header">
+            <span>Your Cart</span>
+            <button id="close-cart" class="close-cart">&times;</button>
+            </div>
+            <div id="cart-items" class="cart-items">
+            <!-- Cart items will be inserted here -->
+            </div>
+        </div>
+  
 
 </body>
 </html>
