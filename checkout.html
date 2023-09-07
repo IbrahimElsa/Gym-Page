@@ -74,11 +74,46 @@
 <script src="dynamicRouting.js"></script>
 
 <script>
-    // Call renderCart when the page loads
     $(document).ready(function() {
-        renderCart();
+        async function initializeCart() {
+            const cartItems = getCartItems();
+            const productIds = cartItems.map(item => item.id);
+            fetchedProductDetails = await fetchProductDetails(productIds);
+            renderCart();
+        }
+    
+        function renderCart() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = '';  // Clear existing items
+    
+            const cartItems = getCartItems();
+            let totalPrice = 0;  // Initialize total price
+            
+            cartItems.forEach((item, index) => {
+                const productDetails = fetchedProductDetails[item.id];
+                if (productDetails) {
+                    cartItemsDiv.innerHTML += `
+                    <div class="product-container">
+                      <img src="${productDetails.Images.split(';')[0].trim()}" alt="${productDetails.Name}" />
+                      ${productDetails.Name} - $${productDetails.Price}
+                      <i class="bi bi-x-lg" onclick="removeFromCart(${index})" style="cursor:pointer;"></i>
+                    </div>`;
+                    
+                    totalPrice += parseFloat(productDetails.Price);  // Accumulate the total price
+                }
+            });
+            
+            // Display the total price
+            const totalElement = document.querySelector(".text-right strong");
+            if (totalElement) {
+                totalElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+            }
+        }
+    
+        initializeCart();
     });
-</script>
+    </script>
+    
 
 </body>
 </html>
