@@ -273,11 +273,27 @@ body {
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #ccc;
-  }
+}
   
-  .product-container img {
+.product-container img {
     max-height: 100px; /* or whatever size you want */
     max-width: 100px;
     margin-right: 10px;
-  }
-  
+}
+
+#view-cart-button {
+    justify-content: center;
+    display: block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    border-radius: 30px;
+}
+
+#view-cart-button:hover {
+    background-color: #555;
+} 
