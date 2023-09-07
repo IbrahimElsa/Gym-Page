@@ -266,3 +266,18 @@ body {
         background-color: white;
 }
 
+/* Cart image container */
+.product-container {
+    height: 25%; /* 100% / 4 products = 25% for each product */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .product-container img {
+    max-height: 100px; /* or whatever size you want */
+    max-width: 100px;
+    margin-right: 10px;
+  }
+  

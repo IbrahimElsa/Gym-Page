@@ -1,4 +1,5 @@
-let productId;  
+let productId;
+let fetchedProductDetails = {};
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     productId = urlParams.get('id');
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data && data.length > 0) {
                 const product = data[0];
+                fetchedProductDetails[productId] = product;
                 titleElement.textContent = product.Name;
                 priceElement.textContent = `Price: $${product.Price}`;
                 
