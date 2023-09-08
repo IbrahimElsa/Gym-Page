@@ -50,6 +50,12 @@ body {
 .cart-icon-black {
     color: black;
 }
+.cart-bubble {
+    font-size: 0.75rem;      
+    min-width: 20px;         
+    line-height: 1;          
+}
+
 .slide-in-cart {
     position: fixed;
     top: 0;
@@ -82,7 +88,6 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
 }
-  
 
 #logo {
     height: 100px;
@@ -267,12 +272,35 @@ body {
 }
 
 /* Cart image container */
+.cart-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px; /* or whatever height you desire for the header */
+    position: relative; /* this is important for positioning the close button */
+}
+.close-cart {
+    position: absolute;
+    top: 10px;  /* adjust as needed for vertical positioning */
+    right: 10px; /* adjust as needed for horizontal positioning */
+    background: none; /* to remove any default button styling */
+    border: none; /* to remove any default button styling */
+}
+
+.cart-header span {
+    margin: 0;
+    padding: 0;
+}
+
 .product-container {
     height: 25%; /* 100% / 4 products = 25% for each product */
     display: flex;
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
   
 .product-container img {
@@ -285,6 +313,7 @@ body {
     z-index: 1050;  /* this should be higher than the backdrop's z-index */
     /* ... other styles ... */
 }
+
 #cart-backdrop {
     position: fixed;
     top: 0;
