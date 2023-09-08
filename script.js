@@ -70,19 +70,34 @@ function renderCart() {
 
 // Function to toggle the slide-in cart
 async function toggleCart() {
-    const cart = document.getElementById('slide-in-cart');
-    cart.classList.toggle('show');
+  const cart = document.getElementById('slide-in-cart');
+  const backdrop = document.getElementById('cart-backdrop');  // get the backdrop element
   
-    // Fetch items from local storage
-    const cartItems = getCartItems();
+  cart.classList.toggle('show');
   
-    // Fetch details for all product IDs in the cart
-    const productIds = cartItems.map(item => item.id);
-    fetchedProductDetails = await fetchProductDetails(productIds);
-  
-    // Render the cart items
-    renderCart();
+  if (cart.classList.contains('show')) {
+    backdrop.style.display = 'block';
+    setTimeout(() => {
+        backdrop.style.opacity = '1';  // fade in
+    }, 10);  // slight delay to ensure the display block has been applied
+} else {
+    backdrop.style.opacity = '0';  // fade out
+    setTimeout(() => {
+        backdrop.style.display = 'none';
+    }, 300);  // delay to hide the backdrop after fade out completes (should match the transition duration)
 }
+
+  // Fetch items from local storage
+  const cartItems = getCartItems();
+
+  // Fetch details for all product IDs in the cart
+  const productIds = cartItems.map(item => item.id);
+  fetchedProductDetails = await fetchProductDetails(productIds);
+
+  // Render the cart items
+  renderCart();
+}
+
 
 // Function to remove an item from the cart by index
 function removeFromCart(index) {

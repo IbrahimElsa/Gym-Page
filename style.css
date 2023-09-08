@@ -281,6 +281,23 @@ body {
     margin-right: 10px;
 }
 
+#slide-in-cart {
+    z-index: 1050;  /* this should be higher than the backdrop's z-index */
+    /* ... other styles ... */
+}
+#cart-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+    opacity: 0;  /* start from transparent */
+    transition: opacity 0.3s ease;  /* smooth transition for opacity */
+}
+
 #view-cart-button {
     justify-content: center;
     display: block;
