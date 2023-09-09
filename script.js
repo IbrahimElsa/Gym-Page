@@ -51,22 +51,38 @@ $(document).on('scroll', function() {
 
 // Function to render the cart
 function renderCart() {
-    const cartItemsDiv = document.getElementById('cart-items');
-    cartItemsDiv.innerHTML = '';  // Clear existing items
+  const cartItemsDiv = document.getElementById('cart-items');
+  cartItemsDiv.innerHTML = '';  // Clear existing items
 
-    const cartItems = getCartItems();
-    cartItems.forEach((item, index) => {
-        const productDetails = fetchedProductDetails[item.id];
-        if (productDetails) {
-            cartItemsDiv.innerHTML += `
-            <div class="product-container">
-              <img src="${productDetails.Images.split(';')[0].trim()}" alt="${productDetails.Name}" />
-              ${productDetails.Name} - $${productDetails.Price}
-              <i class="bi bi-x-lg" onclick="removeFromCart(${index})" style="cursor:pointer;"></i>
-            </div>`;
-        }
-    });
+  const cartItems = getCartItems();
+  cartItems.forEach((item, index) => {
+      const productDetails = fetchedProductDetails[item.id];
+      if (productDetails) {
+          cartItemsDiv.innerHTML += `
+          <div class="product-container d-flex align-items-center">
+            <div class="product-img-container img-card">
+                <a href="product.html?id=${item.id}"> <!-- Adjusted the href value here -->
+                    <img src="${productDetails.Images.split(';')[0].trim()}" alt="${productDetails.Name}" class="product-img" />
+                </a>
+            </div>
+            <div class="product-info ml-3">
+                <div>${productDetails.Name}</div>
+                <div>${productDetails.Colors.split(';')[0]} | ${productDetails.Sizes.split(';')[0]}</div>
+                <div>$${productDetails.Price}</div>
+            </div>
+            <i class="bi bi-x-lg ml-auto" onclick="removeFromCart(${index})" style="cursor:pointer;"></i>
+          </div>`;
+      }
+  });
 }
+
+
+
+
+
+
+
+
 
 // Function to toggle the slide-in cart
 async function toggleCart() {
@@ -117,7 +133,11 @@ $(document).ready(function(){
   // Attach event listeners related to the cart
   document.querySelector('.cart').addEventListener('click', toggleCart);
   document.getElementById('close-cart').addEventListener('click', toggleCart);
-
+  document.getElementById('cart-backdrop').addEventListener('click', toggleCart);
+  document.getElementById('cart-count').addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent the parent (cart icon) event from firing again
+    toggleCart();
+  });
   $("#mainImage").click(function(){
     let imgSrc = $(this).attr("src");
     $("#popupImage").attr("src", imgSrc);
