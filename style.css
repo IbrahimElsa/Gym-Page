@@ -71,7 +71,20 @@ body {
 .slide-in-cart.show {
     right: 0;
 }
-  
+@media (max-width: 767px) { /* Adjust this breakpoint according to your design */
+    .slide-in-cart {
+        top: auto;
+        bottom: -100%;  /* initially set it off the screen */
+        right: 0;
+        width: 100%;  /* make it full width */
+        height: 85%;  /* height of the slide-in cart */
+        transition: bottom 0.3s;
+    }
+
+    .slide-in-cart.show {
+        bottom: 0;
+    }
+}  
 .cart-header {
     display: flex;
     justify-content: space-between;
@@ -319,6 +332,7 @@ body {
 
 .product-info {
     flex: 1;
+    margin-left: 20px;
 }
 #cart-items {
     /* This makes the cart-items div grow to fill available space, pushing the checkout button to the bottom */

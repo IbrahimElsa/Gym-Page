@@ -48,6 +48,9 @@ $(document).on('scroll', function() {
     $('.cart-icon').removeClass('cart-icon-black').addClass('cart-icon-white');
   }
 });
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 // Function to render the cart
 function renderCart() {
@@ -67,7 +70,7 @@ function renderCart() {
             </div>
             <div class="product-info ml-3">
                 <div>${productDetails.Name}</div>
-                <div>${productDetails.Colors.split(';')[0]} | ${productDetails.Sizes.split(';')[0]}</div>
+                <div>${capitalizeFirstLetter(item.color)} | ${capitalizeFirstLetter(item.size)}</div>
                 <div>$${productDetails.Price}</div>
             </div>
             <i class="bi bi-x-lg ml-auto" onclick="removeFromCart(${index})" style="cursor:pointer;"></i>
@@ -75,10 +78,6 @@ function renderCart() {
       }
   });
 }
-
-
-
-
 
 
 
@@ -164,6 +163,13 @@ $(document).ready(function(){
 
 // Function to add an item to the cart
 function addToCart(product) {
+  // Getting the selected size and color values
+  const selectedSize = document.getElementById('size').value;
+  const selectedColor = document.getElementById('color').value;
+
+  product.size = selectedSize;
+  product.color = selectedColor;
+
   let cart = JSON.parse(localStorage.getItem('cart') || '[]');
   cart.push(product);
   localStorage.setItem('cart', JSON.stringify(cart));
