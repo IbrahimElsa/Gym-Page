@@ -291,6 +291,7 @@ body {
     align-items: center;
     height: 60px; /* or whatever height you desire for the header */
     position: relative; /* this is important for positioning the close button */
+    font-weight: 400;
 }
 .close-cart {
     position: absolute;
