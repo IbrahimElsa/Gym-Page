@@ -114,6 +114,7 @@ body {
     background-size: cover;
     position: relative;
     overflow-x:hidden;
+    font-weight: 400;
 }
 
 #hero .container {
