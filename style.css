@@ -36,6 +36,9 @@ body {
     margin-right: 10px;
     font-family: 'Bebas Neue', sans-serif;
 }
+.navbar {
+    z-index: 1000;  /* Adjust this value if needed */
+}
 
 .nav-txt:hover {
     text-decoration: underline;
@@ -347,7 +350,7 @@ body {
 }
 
 #slide-in-cart {
-    z-index: 1050;
+    z-index: 1200;
     display: flex;
     flex-direction: column;  /* this should be higher than the backdrop's z-index */
 }
