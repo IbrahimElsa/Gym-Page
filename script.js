@@ -48,9 +48,10 @@ $(document).on('scroll', function() {
     $('.cart-icon').removeClass('cart-icon-black').addClass('cart-icon-white');
   }
 });
-// function capitalizeFirstLetter(string) {
-//   return string.charAt(0).toUpperCase() + string.slice(1);
-// }
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 // Function to render the cart
 function renderCart() {
@@ -70,7 +71,7 @@ function renderCart() {
             </div>
             <div class="product-info ml-3">
                 <div>${productDetails.Name}</div>
-                <div>${item.color} | ${item.size}</div>
+                <div>${capitalizeFirstLetter(item.color)} | ${capitalizeFirstLetter(item.size)}</div>
                 <div>$${productDetails.Price}</div>
             </div>
             <i class="bi bi-x-lg ml-auto" onclick="removeFromCart(${index})" style="cursor:pointer;"></i>
