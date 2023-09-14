@@ -43,6 +43,10 @@ body {
 .nav-txt:hover {
     text-decoration: underline;
 }
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .cart{
     margin-right: 10px;
 }
