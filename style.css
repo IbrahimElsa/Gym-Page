@@ -10,6 +10,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, input, textarea, .navbar, .btn {
 body {
     font-family: 'Bebas Neue', sans-serif;
 }
+
 .transparent-nav {
     background: transparent;
     transition: background 0.3s ease;
