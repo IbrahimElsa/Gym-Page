@@ -254,6 +254,8 @@ body {
 .btn-primary:hover::before, .btn-primary:focus::before {
     left: 0; 
 }
+
+
 .thumbnail {
     width: 80px;
     margin: 10px 0;
