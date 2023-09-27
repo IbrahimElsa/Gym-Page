@@ -21,22 +21,18 @@ function populateProductDetails() {
       if (productData && productData.length > 0) {
           const product = productData[0];
           
-          const img = card.querySelector('.card-img-top');
-          const title = card.querySelector('.card-title');
-          const price = card.querySelector('.card-text');
+          if (product.Name && product.Price) {
+              const img = card.querySelector('.card-img-top');
+              const title = card.querySelector('.card-title');
+              const price = card.querySelector('.card-text');
 
-          if (!title || !price) {
-              console.error("Error in card:", card);
-              return; // Skip this iteration
+              img.src = product.Images ? product.Images.split(';')[0].trim() : '';  // Defaulting to the first image
+              title.textContent = product.Name;
+              price.textContent = `Price: $${product.Price}`;
           }
-          
-          img.src = product.Images ? product.Images.split(';')[0].trim() : '';  // Defaulting to the first image
-          title.textContent = product.Name;
-          price.textContent = `Price: $${product.Price}`;
       }
   });
 }
-
 
 // Function to update the cart count displayed
 function updateCartCount() {
