@@ -7,10 +7,19 @@ AOS.init({
 
 // Function to fetch product details based on product ID
 async function fetchProductDetails(productId) {
-  const response = await fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`);
-  const data = await response.json();
-  return data;
+  try {
+      const response = await fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`);
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error("There was a problem with the fetch operation:", error.message);
+      return null;
+  }
 }
+
 
 function populateProductDetails() {
   const cards = document.querySelectorAll('.card[data-product-id]');
