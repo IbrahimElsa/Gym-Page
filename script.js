@@ -25,6 +25,7 @@ function populateProductDetails() {
   const cards = document.querySelectorAll('.card[data-product-id]');
   cards.forEach(async (card) => {
       const productId = card.getAttribute('data-product-id');
+      console.log("Fetching product details for ID:", productId); // Debugging line
       const productData = await fetchProductDetails(productId);
 
       if (productData && productData.length > 0) {
@@ -35,13 +36,14 @@ function populateProductDetails() {
               const title = card.querySelector('.card-title');
               const price = card.querySelector('.card-text');
 
-              img.src = product.Images ? product.Images.split(';')[0].trim() : '';  // Defaulting to the first image
-              title.textContent = product.Name;
-              price.textContent = `Price: $${product.Price}`;
+              if (img) img.src = product.Images ? product.Images.split(';')[0].trim() : '';  // Defaulting to the first image
+              if (title) title.textContent = product.Name;
+              if (price) price.textContent = `Price: $${product.Price}`;
           }
       }
   });
 }
+
 
 // Function to update the cart count displayed
 function updateCartCount() {
