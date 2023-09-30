@@ -5,38 +5,32 @@ AOS.init({
   delay: 200,
 });
 
-// Function to fetch product details based on product ID
-async function fetchProductDetails(productId) {
-  try {
-      const response = await fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${productId}`);
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      return data;
-  } catch (error) {
-      console.error("There was a problem with the fetch operation:", error.message);
-      return null;
+// Function to fetch multiple products based on a list of product IDs
+async function fetchProductDetails(productIds) {
+  const productDetails = {};
+  for (let id of productIds) {
+    const response = await fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?id=${id}`);
+    const data = await response.json();
+    if (data && data.length > 0) {
+      productDetails[id] = data[0];
+    }
   }
+  return productDetails;
 }
 
-
+// Function to populate product details
 function populateProductDetails() {
   const cards = document.querySelectorAll('.card[data-product-id]');
   cards.forEach(async (card) => {
       const productId = card.getAttribute('data-product-id');
-      console.log("Fetching product details for ID:", productId); // Debugging line
-      const productData = await fetchProductDetails(productId);
-
-      if (productData && productData.length > 0) {
-          const product = productData[0];
-          
+      const productData = await fetchProductDetails([productId]); // Updated to pass an array
+      if (productData && productData[productId]) {
+          const product = productData[productId];
           if (product.Name && product.Price) {
               const img = card.querySelector('.card-img-top');
               const title = card.querySelector('.card-title');
               const price = card.querySelector('.card-text');
-
-              if (img) img.src = product.Images ? product.Images.split(';')[0].trim() : '';  // Defaulting to the first image
+              if (img) img.src = product.Images ? product.Images.split(';')[0].trim() : '';  
               if (title) title.textContent = product.Name;
               if (price) price.textContent = `Price: $${product.Price}`;
           }
@@ -161,6 +155,7 @@ function clearCart() {
   localStorage.removeItem('cart');
   updateCartCount();
 }
+
 
 $(document).ready(function(){
   // Initialize cart count
