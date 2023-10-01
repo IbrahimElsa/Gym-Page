@@ -115,23 +115,28 @@ body {
     width: 100px;
 }
 #hero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-left: 4rem;  /* Increased padding to move text further left */
+    padding-bottom: 2rem;
     margin-top: 0;
     height: 100vh;
     background-image: url('pictures/hero.webp');
     background-size: cover;
     position: relative;
-    overflow-x:hidden;
+    overflow-x: hidden;
     font-weight: 400;
+    color: white;
 }
 
 #hero .container {
+    text-align: left;
     font-weight: 500;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    height: auto;
+    justify-content: flex-start;
+    margin: 0;     /* Ensure there's no margin */
+    padding: 0;    /* Ensure there's no padding */
 }
 #about {
     height: 65vh;
