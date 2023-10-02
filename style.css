@@ -38,7 +38,8 @@ body {
     font-family: 'Bebas Neue', sans-serif;
 }
 .navbar {
-    z-index: 1000;  /* Adjust this value if needed */
+    z-index: 1000;
+    margin-left: 3rem;
 }
 
 .nav-txt:hover {
