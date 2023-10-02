@@ -125,6 +125,7 @@ body {
     height: 100vh;
     background-image: url('pictures/hero.webp');
     background-size: cover;
+    background-position: center center;
     position: relative;
     overflow-x: hidden;
     font-weight: 400;
