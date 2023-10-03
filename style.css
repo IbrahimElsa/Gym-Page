@@ -217,10 +217,11 @@ body {
 .product-image {
     width: 100%;
     height: auto;
-    max-height: 50vh;
+    max-height: 55vh;
     object-fit: contain;
     display: block;
     margin: 0 auto;
+    border-radius: 10px;
 }
 
 .product-section {

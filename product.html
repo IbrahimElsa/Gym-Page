@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css">
 
 </head>
-<body class="pt-5 mt-5">
+<body class="pt-5 mt-5" style="background-color: #f9f9f9;">
     <header>
-        <nav class="navbar navbar-expand-md pt-0 fixed-top bg-light">
+        <nav class="navbar navbar-expand-md pt-0 fixed-top bg-white">
             <div class="container-fluid">
     
                 <div class="row align-items-center w-100">
@@ -231,7 +231,23 @@
             </div>
         </div>
         
-        
+        <div class="modal fade" id="cartAddedModal" tabindex="-1" aria-labelledby="cartAddedModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartAddedModalLabel">Item Added!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        The item has been added to your cart.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='checkout.html'">View Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
   
 
 </body>
