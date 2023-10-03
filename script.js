@@ -194,7 +194,9 @@ $(document).ready(function(){
           };
 
           addToCart(product);
-          alert('Product added to cart');
+
+          // Show the modal instead of the alert
+          $('#cartAddedModal').modal('show');
       });
   }
 });

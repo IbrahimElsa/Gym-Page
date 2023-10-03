@@ -307,6 +307,11 @@ body {
         overflow: hidden;
         background-color: white;
 }
+.short-modal {
+    max-height: 250px;  /* Adjust as needed */
+    overflow-y: auto;
+}
+
 
 /* Cart image container */
 .cart-header {
