@@ -24,8 +24,13 @@ export async function handler(event, context) {
     
     const uniqueId = event.queryStringParameters.id;
     
-    const { ObjectId } = require('mongodb'); 
-    const data = await collection.find({ "_id": new ObjectId(uniqueId) }).toArray();
+    let data;
+    if (uniqueId) {
+      const { ObjectId } = require('mongodb'); 
+      data = await collection.find({ "_id": new ObjectId(uniqueId) }).toArray();
+    } else {
+      data = await collection.find({}).toArray(); // Fetch all products if no id is provided
+    }
 
     return {
       statusCode: 200,
@@ -46,3 +51,4 @@ export async function handler(event, context) {
     };
   }
 }
+

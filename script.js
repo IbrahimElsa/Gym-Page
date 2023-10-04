@@ -18,7 +18,7 @@ async function fetchProductDetails(productIds) {
   return productDetails;
 }
 
-// Function to populate product details
+
 // Function to populate product details
 function populateProductDetails() {
   const cards = document.querySelectorAll('.card[data-product-id]');
@@ -212,33 +212,40 @@ $(document).ready(function(){
           }, 2000);
       });
   }
+  if (window.location.href.includes('items.html')) {
+    populateAllProductCards();
+}
 });
-async function populateAllProductCards() {
-  const productsRow = document.getElementById('productsRow');
-  const products = await fetchAllProducts();
 
-  products.forEach(product => {
-      const productCard = `
-          <div class="col-6 col-md-3 card-container" data-aos="fade-up">
-              <div class="card mb-4 h-100" data-product-id="${product.id}">
-                  <img src="${product.Images.split(';')[0].trim()}" class="card-img-top img-fluid" alt="${product.Name}">
+async function populateAllProductCards() {
+  try {
+      const response = await fetch('https://rossthesloth-gym.netlify.app/.netlify/functions/get_product');
+      const products = await response.json();
+      
+      // Assuming productsRow is where you want to populate your product cards
+      const productsRow = document.getElementById('productsRow');
+
+      products.forEach(product => {
+          // Create a product card for each product
+          // For demonstration purposes, I'm simplifying the card. You can customize it further based on your requirements.
+          const productCard = `
+              <div class="card" data-product-id="${product._id}">
+                  <img src="${product.Images.split(';')[0].trim()}" class="card-img-top" alt="${product.Name}">
                   <div class="card-body">
-                      <h5 class="card-title">${product.Name}</h5>
-                      <p class="card-text">$${product.Price.toFixed(2)}</p>
-                      <a href="product.html?id=${product.id}" class="btn btn-primary">View Details</a>
+                      <h3>${product.Name}</h3>
+                      <p>Price: $${product.Price.toFixed(2)}</p>
+                      <!-- Add more details as needed -->
                   </div>
               </div>
-          </div>
-      `;
-      productsRow.innerHTML += productCard;
-  });
-}
+          `;
 
-// Modify your $(document).ready function
-$(document).ready(function() {
-  // ... (your other code)
+          productsRow.innerHTML += productCard;
+      });
 
-  if (window.location.href.includes('items.html')) {
-      populateAllProductCards();
+      // After populating the cards, update their details
+      populateProductDetails();
+
+  } catch (err) {
+      console.error("Error populating products:", err);
   }
-});
+}
