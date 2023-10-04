@@ -101,11 +101,13 @@ async function toggleCart() {
   cart.classList.toggle('show');
 
   if (cart.classList.contains('show')) {
+      document.body.style.overflow = 'hidden';  // Prevent scrolling
       backdrop.style.display = 'block';
       setTimeout(() => {
           backdrop.style.opacity = '1';
       }, 10);
   } else {
+      document.body.style.overflow = '';  // Restore scrolling
       backdrop.style.opacity = '0';
       setTimeout(() => {
           backdrop.style.display = 'none';
@@ -192,11 +194,22 @@ $(document).ready(function(){
               name: 'Product Name based on productId',
               price: 10
           };
-
+  
           addToCart(product);
-
-          // Show the modal instead of the alert
-          $('#cartAddedModal').modal('show');
+  
+          // Position the popup beneath the cart icon
+          const cartIcon = document.querySelector('.cart');
+          const rect = cartIcon.getBoundingClientRect();
+          const popup = document.getElementById('cartAddedPopup');
+          popup.style.top = (rect.bottom + window.scrollY) + 'px';
+          popup.style.right = (window.innerWidth - rect.right) + 'px';
+  
+          // Show the popup
+          $('#cartAddedPopup').show();
+  
+          setTimeout(function() {
+              $('#cartAddedPopup').hide();
+          }, 2000);
       });
   }
 });

@@ -307,10 +307,15 @@ body {
         overflow: hidden;
         background-color: white;
 }
-.short-modal {
-    max-height: 250px;  /* Adjust as needed */
-    overflow-y: auto;
+.cart-popup {
+    display: none;
+    z-index: 1050;
+    width: 12rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    max-height: 3rem;
 }
+
+
 
 
 /* Cart image container */
