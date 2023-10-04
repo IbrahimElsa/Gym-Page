@@ -29,9 +29,13 @@ function populateProductDetails() {
           const product = productData[productId];
           if (product.Name && product.Price) {
               const img = card.querySelector('.card-img-top');
-              const title = card.nextElementSibling; // Get the next element which is the h3
-              const price = title.nextElementSibling; // Get the next element of the h3 which is the p tag for the price
               
+              // Check if the card has the next sibling which is expected to be h3
+              const title = card.nextElementSibling;
+              if (!title) return;  // If there's no title, exit the current loop iteration
+
+              const price = title.nextElementSibling; // Get the next element of the h3 which is the p tag for the price
+
               if (img) img.src = product.Images ? product.Images.split(';')[0].trim() : '';  
               if (title) title.textContent = product.Name;
               if (price) price.textContent = `Price: $${product.Price.toFixed(2)}`;
@@ -39,6 +43,7 @@ function populateProductDetails() {
       }
   });
 }
+
 
 
 
@@ -217,35 +222,55 @@ $(document).ready(function(){
 }
 });
 
-async function populateAllProductCards() {
+async function fetchAndPopulateProducts() {
   try {
       const response = await fetch('https://rossthesloth-gym.netlify.app/.netlify/functions/get_product');
       const products = await response.json();
       
-      // Assuming productsRow is where you want to populate your product cards
-      const productsRow = document.getElementById('productsRow');
-
-      products.forEach(product => {
-          // Create a product card for each product
-          // For demonstration purposes, I'm simplifying the card. You can customize it further based on your requirements.
-          const productCard = `
-              <div class="card" data-product-id="${product._id}">
-                  <img src="${product.Images.split(';')[0].trim()}" class="card-img-top" alt="${product.Name}">
-                  <div class="card-body">
-                      <h3>${product.Name}</h3>
-                      <p>Price: $${product.Price.toFixed(2)}</p>
-                      <!-- Add more details as needed -->
-                  </div>
-              </div>
-          `;
-
-          productsRow.innerHTML += productCard;
-      });
-
-      // After populating the cards, update their details
-      populateProductDetails();
+      // Populate the product cards using the fetched products
+      populateAllProductCards(products);
 
   } catch (err) {
-      console.error("Error populating products:", err);
+      console.error("Error fetching and populating products:", err);
   }
 }
+
+function populateAllProductCards(products) {
+  const productsRow = document.getElementById('productsRow');
+
+  products.forEach(product => {
+      const cardContainer = document.createElement('div');
+      cardContainer.className = 'col-6 col-md-3 card-container mb-5'; // This means 4 cards per row on medium screens and above
+
+      const card = document.createElement('div');
+      card.className = 'card mb-4 h-100';  // 'mb-4' adds a margin-bottom for spacing between rows
+      card.setAttribute('data-product-id', product._id); 
+
+      const img = document.createElement('img');
+      img.className = 'card-img-top img-fluid';
+      img.alt = 'Product Image';
+      img.src = product.Images ? product.Images.split(';')[0].trim() : 'default-image.jpg';
+      card.appendChild(img);
+
+      cardContainer.appendChild(card);
+
+      const title = document.createElement('h3');
+      title.className = 'card-title text-center';
+      title.textContent = product.Name;
+      cardContainer.appendChild(title);
+
+      const price = document.createElement('p');
+      price.className = 'card-text text-center';
+      price.textContent = `Price: $${product.Price.toFixed(2)}`;
+      cardContainer.appendChild(price);
+
+      productsRow.appendChild(cardContainer);
+  });
+}
+
+
+
+
+// Call the function to start the process
+fetchAndPopulateProducts();
+
