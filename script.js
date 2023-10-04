@@ -213,3 +213,32 @@ $(document).ready(function(){
       });
   }
 });
+async function populateAllProductCards() {
+  const productsRow = document.getElementById('productsRow');
+  const products = await fetchAllProducts();
+
+  products.forEach(product => {
+      const productCard = `
+          <div class="col-6 col-md-3 card-container" data-aos="fade-up">
+              <div class="card mb-4 h-100" data-product-id="${product.id}">
+                  <img src="${product.Images.split(';')[0].trim()}" class="card-img-top img-fluid" alt="${product.Name}">
+                  <div class="card-body">
+                      <h5 class="card-title">${product.Name}</h5>
+                      <p class="card-text">$${product.Price.toFixed(2)}</p>
+                      <a href="product.html?id=${product.id}" class="btn btn-primary">View Details</a>
+                  </div>
+              </div>
+          </div>
+      `;
+      productsRow.innerHTML += productCard;
+  });
+}
+
+// Modify your $(document).ready function
+$(document).ready(function() {
+  // ... (your other code)
+
+  if (window.location.href.includes('items.html')) {
+      populateAllProductCards();
+  }
+});
