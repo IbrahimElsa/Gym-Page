@@ -179,11 +179,7 @@ body {
     margin: 0 auto;
     border-radius: 10px !important;
 }
-.clothing img {
 
-    height: 100%;  /* Set the height to 100% so the image takes up the full height of its container */
-    object-fit: cover;  /* The image will cover its container without distorting its aspect ratio */
-}
 
 @media (max-width: 576px) { 
     .card {
