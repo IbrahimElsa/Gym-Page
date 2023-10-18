@@ -190,7 +190,6 @@ $(document).ready(function(){
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
 
-  // Attach addToCart function to "Add to Cart" button
   const addToCartButton = document.getElementById('addToCartButton');
   if (addToCartButton) {
       addToCartButton.addEventListener('click', function() {
@@ -227,7 +226,6 @@ async function fetchAndPopulateProducts() {
       const response = await fetch('https://rossthesloth-gym.netlify.app/.netlify/functions/get_product');
       const products = await response.json();
       
-      // Populate the product cards using the fetched products
       populateAllProductCards(products);
 
   } catch (err) {
@@ -240,10 +238,10 @@ function populateAllProductCards(products) {
 
   products.forEach(product => {
       const cardContainer = document.createElement('div');
-      cardContainer.className = 'col-6 col-md-3 card-container mb-5'; // This means 4 cards per row on medium screens and above
+      cardContainer.className = 'col-6 col-md-3 card-container mb-5';
 
       const card = document.createElement('div');
-      card.className = 'card mb-4 h-100';  // 'mb-4' adds a margin-bottom for spacing between rows
+      card.className = 'card mb-4 h-100';  
       card.setAttribute('data-product-id', product._id); 
 
       const img = document.createElement('img');
