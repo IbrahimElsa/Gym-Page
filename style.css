@@ -299,7 +299,7 @@ body {
 /* product sections */
 
 .product-image {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     max-height: 55vh;
     object-fit: contain;
