@@ -242,7 +242,12 @@ function populateAllProductCards(products) {
 
       const card = document.createElement('div');
       card.className = 'card mb-4 h-100';  
-      card.setAttribute('data-product-id', product._id); 
+      card.setAttribute('data-product-id', product._id);
+
+      // Adding the click event to the card to redirect to its product detail page
+      card.onclick = function() {
+          window.location.href = `product.html?id=${product._id}`;
+      };
 
       const img = document.createElement('img');
       img.className = 'card-img-top img-fluid';
@@ -265,6 +270,7 @@ function populateAllProductCards(products) {
       productsRow.appendChild(cardContainer);
   });
 }
+
 
 
 
