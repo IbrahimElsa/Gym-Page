@@ -183,8 +183,8 @@ body {
 /*Mobile optimization*/
 @media (max-width: 576px) { 
     .card-container {
-        width: 50% !important;
-        float: left;
+        width: 50% ;
+        /* float: left; */
     }
     
     .card-container {
