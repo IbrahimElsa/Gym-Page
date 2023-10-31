@@ -171,7 +171,7 @@ body {
     margin-bottom: 30px;
 }
 .card {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     overflow: hidden;
