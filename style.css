@@ -179,7 +179,15 @@ body {
     margin: 0 auto;
     border-radius: 10px !important;
 }
+@media (min-width: 576px) and (max-width: 767px) {
+    .card-container {
+        width: 33.333%; /* 3 columns when width is between 576px and 767px */
+    }
 
+    .card-container {
+        margin-bottom: 3rem;
+    }
+}
 /*Mobile optimization*/
 @media (max-width: 576px) { 
     .card-container {
@@ -191,7 +199,6 @@ body {
         margin-bottom: 3rem;
     }
 }
-
 @media (max-width: 767px) {
     /* Reduce the font size of the navbar links */
     .navbar-nav .nav-link {
@@ -247,6 +254,11 @@ body {
       max-height: 40vh;
     }
   }
+  #productsRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 
 
