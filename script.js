@@ -238,7 +238,7 @@ function populateAllProductCards(products) {
 
   products.forEach(product => {
       const cardContainer = document.createElement('div');
-      cardContainer.className = 'col-12 col-md-3 card-container mb-5';
+      cardContainer.className = 'col-6 col-sm-4 col-md-3 card-container mb-5';
 
       const card = document.createElement('div');
       card.className = 'card mb-4 h-100';  
