@@ -25,50 +25,35 @@
     <header>
         <nav class="navbar navbar-expand-md pt-0 fixed-top bg-white" style="margin-bottom: 5rem;">
             <div class="container-fluid">
+                <!-- Toggler -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
     
-                <div class="row align-items-center w-100">
-    
-                    <!-- Menu Items on the left (4 columns for larger screens, full width for smaller) -->
-                    <div class="col-lg-4 d-flex">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav ml-auto">
-                                
-                                <!-- Featured Products Dropdown -->
-                                <li class="nav-item dropdown">
-                                    <a class="nav-txt nav-link fs-5" href="items.html" id="featuredDropdown" role="button">
-                                        Products
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item"><a class="nav-txt nav-link fs-5" href="#about">About Us</a></li>
-                                <li class="nav-item"><a class="nav-txt nav-link fs-5" href="#contact">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-    
-                    <!-- Logo in the center (4 columns for larger screens, full width for smaller) -->
-                    <div class="col-lg-4 text-center">
-                        <a class="navbar-brand mx-auto" href="index.html">
-                            <img src="pictures/logo_nobg_small.png" id="logo" alt="Fitness Equipment Store Logo">
-                        </a>
-                    </div>
-    
-                    <!-- Cart on the right (4 columns for larger screens, full width for smaller) -->
-                    <div class="col-lg-4 text-end">
-                        <a href="#shopping-cart" class="order-md-5 position-relative cart-wrapper">
-                            <i class="cart bi bi-cart3 fs-5 cart-icon-black"></i>
-                            <div class="position-absolute end-0 bottom-0 bg-primary-subtle text-dark rounded-circle p-1 cart-bubble text-center" id="cart-count">0</div>
-                        </a>
-                    </div>
-    
+                <!-- Logo in the center (4 columns for larger screens, auto for smaller) -->
+                <div class="navbar-brand mx-auto mx-md-0 order-md-2" href="index.html">
+                    <img src="pictures/logo_nobg_small.png" id="logo" alt="Fitness Equipment Store Logo">
                 </div>
     
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse order-md-1" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Your nav items here -->
+                    </ul>
+                </div>
+    
+                <!-- Cart on the right (auto for smaller screens, 4 columns for larger) -->
+                <div class="order-md-3 ms-auto">
+                    <a href="#shopping-cart" class="position-relative cart-wrapper">
+                        <i class="cart bi bi-cart3 fs-5 cart-icon-black"></i>
+                        <div class="position-absolute end-0 bottom-0 bg-primary-subtle text-dark rounded-circle p-1 cart-bubble text-center" id="cart-count">0</div>
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
+    
+    
 
     <section class="py-md-5 pt-md-5 mb-md-5 py-3 pt-3 mb-3">
         <div class="container-fluid">
