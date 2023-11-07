@@ -192,7 +192,7 @@ body {
 @media (max-width: 576px) { 
     .card-container {
         width: 50% ;
-        /* float: left; */
+        margin-bottom: 3rem;
     }
     
     .card-container {
