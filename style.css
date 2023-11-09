@@ -180,6 +180,7 @@ body {
     border-radius: 10px !important;
 }
 
+  
 @media (min-width: 576px) and (max-width: 767px) {
     .card-container {
         width: 33.333%; /* 3 columns when width is between 576px and 767px */
@@ -200,7 +201,9 @@ body {
     .card-text{
         font-size: 0.8rem;
     }
-    
+    .cart-wrapper {
+        margin-right: -1.5rem; /* Increase the margin-right to move the cart picture to the right */
+    }
     .card-container {
         margin-bottom: 3rem;
     }
