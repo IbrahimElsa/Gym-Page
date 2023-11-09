@@ -48,6 +48,16 @@ body {
     display: block;
 }
 
+.navbar-toggler {
+    color: white;
+}
+  
+.navbar-toggler-scrolled .navbar-toggler-icon {
+    filter: invert(100%);
+    color: white;
+}
+  
+
 .cart{
     margin-right: 10px;
 }
