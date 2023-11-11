@@ -29,7 +29,7 @@ export async function handler(event, context) {
       const { ObjectId } = require('mongodb'); 
       data = await collection.find({ "_id": new ObjectId(uniqueId) }).toArray();
     } else {
-      data = await collection.find({}).toArray(); // Fetch all products if no id is provided
+      data = await collection.find({}).toArray();
     }
 
     return {
