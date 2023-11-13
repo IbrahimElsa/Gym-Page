@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gym-Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>Contact - Gym-Page</title>
+</head>
+
+<body style="padding-top: 5rem;">
+    <header>
+        <nav class="navbar navbar-expand-md pt-0 fixed-top bg-white">
+            <div class="container-fluid">
+                <div class="row align-items-center w-100">
+    
+                    <!-- Navbar toggler -->
+                    <div class="col-4 d-md-none d-flex justify-content-start">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+    
+                    <!-- Menu Items -->
+                    <div class="col-12 col-md-4 collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Featured Products Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-txt nav-link fs-5" href="items.html" id="featuredDropdown" role="button">
+                                    Products
+                                </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-txt nav-link fs-5" href="#" data-bs-toggle="modal" data-bs-target="#aboutUsModal">About Us</a></li>
+                            <li class="nav-item"><a class="nav-txt nav-link fs-5" href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+    
+                    <!-- Logo in the center -->
+                    <div class="col-4 col-md-4 text-center">
+                        <a class="navbar-brand mx-auto" href="index.html">
+                            <img src="pictures/logo_nobg_small.png" id="logo" alt="Fitness Equipment Store Logo">
+                        </a>
+                    </div>
+    
+                    <!-- Cart on the right -->
+                    <div class="col-4 col-md-4 text-end d-flex justify-content-end">
+                        <a href="#shopping-cart" class="order-md-5 position-relative cart-wrapper">
+                            <i class="cart bi bi-cart3 fs-5 cart-icon"></i>
+                            <div class="position-absolute end-0 bottom-0 bg-primary-subtle text-dark rounded-circle p-1 cart-bubble text-center" id="cart-count">0</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <section id="contact" class="container my-5">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Your message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <!-- Optional: Any additional contact information like address, phone number, etc. -->
+                <p><strong>Address:</strong> 123 Gym Street, Fitness City</p>
+                <p><strong>Phone:</strong> (123) 456-7890</p>
+                <p><strong>Email:</strong> contact@gym-page.com</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <div class="container p-4">
+            <div class="row">
+              <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Footer Menu</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#!" class="text-dark">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-dark">FAQ</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-dark">Returns and Exchange</a>
+                  </li>
+                </ul>
+              </div>
+        
+              <div class="col-lg-6 col-md-12 mb-4 mb-md-0 mt-5">
+                <h5 class="text-uppercase">Newsletter</h5>
+        
+                <form action="" netlify>
+                  <div class="form-outline mb-4">
+                    <input type="email" id="form5Example2" class="form-control" placeholder="Enter your email address"/>
+                  </div>
+        
+                  <button type="submit" class="btn btn-primary mb-4">Subscribe</button>
+        
+                  <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Fitness Equipment Store
+          </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script src="dynamicRouting.js"></script>
+
+    
+    <div id="cart-backdrop"></div>
+
+
+    <!-- Slide-in Cart -->
+    <div id="slide-in-cart" class="slide-in-cart d-flex flex-column">
+        <div class="cart-header">
+            <span>Your Cart</span>
+            <button id="close-cart" class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items flex-grow-1">
+            <!-- Cart items will be inserted here -->
+        </div>
+        <div class="d-flex justify-content-center w-100 mt-2 mb-3">
+            <button class="btn btn-primary view-cart-button" onclick="window.location.href='checkout.html'">View Cart</button>
+        </div>
+    </div>
+    
+    <div id="cartAddedPopup" class="cart-popup position-absolute p-3 bg-white rounded shadow text-center">
+        <p><i class="bi bi-bag-check"></i> Item added to cart!</p>
+    </div>
+</body>
+
+</html>
