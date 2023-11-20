@@ -51,8 +51,14 @@ body {
 .navbar-toggler {
     color: white;
 }
+
+.navbar-collapse {
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+  }
   
-.navbar-toggler-scrolled .navbar-toggler-icon {
+.navbar-toggler-scrolled .navbar-toggler-icon .navbar-collapse{
     filter: invert(100%);
     color: white;
 }
