@@ -51,6 +51,9 @@ body {
 .navbar-toggler {
     color: white;
 }
+.navbar-bg {
+    background-color: white;
+}
 
 .navbar-collapse {
     position: absolute;
