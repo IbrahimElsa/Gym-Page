@@ -55,11 +55,7 @@ body {
     background-color: white;
 }
 
-.navbar-collapse {
-    position: absolute;
-    top: 100%;
-    z-index: 1;
-  }
+
   
 .navbar-toggler-scrolled .navbar-toggler-icon .navbar-collapse{
     filter: invert(100%);
@@ -111,6 +107,12 @@ body {
     .slide-in-cart.show {
         bottom: 0;
     }
+
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        z-index: 1;
+      }
 }  
 .cart-header {
     display: flex;
