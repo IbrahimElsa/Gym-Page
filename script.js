@@ -61,12 +61,12 @@ $(document).on('scroll', function() {
   if ($(window).scrollTop() > 50) {
       $('.transparent-nav').addClass('navbar-scrolled');
       $('.cart-icon').removeClass('cart-icon-white').addClass('cart-icon-black');
-      $('.navbar-toggler').addClass('navbar-toggler-scrolled');
+      $('.navbar-toggler-icon').removeClass('navbar-toggler-icon-inverted');
       $('.navbar-background').addClass('navbar-bg'); // Updated line
   } else {
       $('.transparent-nav').removeClass('navbar-scrolled');
       $('.cart-icon').removeClass('cart-icon-black').addClass('cart-icon-white');
-      $('.navbar-toggler').removeClass('navbar-toggler-scrolled');
+      $('.navbar-toggler-icon').addClass('navbar-toggler-icon-inverted');
       $('.navbar-background').removeClass('navbar-bg'); // Updated line
   }
 });

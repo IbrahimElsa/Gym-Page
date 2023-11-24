@@ -54,12 +54,9 @@ body {
 .navbar-bg {
     background-color: white;
 }
-
-
   
-.navbar-toggler-scrolled .navbar-toggler-icon .navbar-collapse{
+.navbar-toggler-icon-inverted {
     filter: invert(100%);
-    color: white;
 }
   
 
