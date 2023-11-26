@@ -225,6 +225,13 @@ body {
     .card-container {
         margin-bottom: 3rem;
     }
+    #hero {
+        padding-left: 1rem; /* Adjust padding for mobile */
+        padding-right: 1rem; /* Add right padding for symmetry */
+    }
+    #hero .container {
+        width: 100%; /* Use full width for mobile */
+    }
 }
 @media (max-width: 767px) {
     /* Reduce the font size of the navbar links */
