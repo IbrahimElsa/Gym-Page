@@ -1,5 +1,28 @@
 let productId;
 let fetchedProductDetails = {};
+
+// Function to load random products for the "Items You May Like" section
+function loadRandomProducts(count) {
+    fetch(`https://rossthesloth-gym.netlify.app/.netlify/functions/get_product?random=${count}`)
+        .then(response => response.json())
+        .then(products => {
+            const productsContainer = document.querySelector('.items-you-may-like .row');
+            productsContainer.innerHTML = ''; // Clear existing content
+            products.forEach(product => {
+                const productHTML = `
+                    <div class="col-6 col-md-3 card-container" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card mb-4 h-100 clothing" data-product-id="${product._id}">
+                            <img src="${product.Images.split(';')[0]}" class="card-img-top" alt="${product.Name}">
+                            <h3 class="card-title text-center">${product.Name}</h3>
+                            <p class="card-text text-center">Price: $${product.Price}</p>
+                        </div>
+                    </div>`;
+                productsContainer.innerHTML += productHTML;
+            });
+        })
+        .catch(err => console.error("Error loading random products:", err));
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     productId = urlParams.get('id');
@@ -96,4 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(err => {
             console.error("Failed to fetch product:", err);
         });
+
+    // Call to load random products for the "Items You May Like" section
+    loadRandomProducts(4); // Load 4 random products
 });
