@@ -23,21 +23,12 @@ export async function handler(event, context) {
     const collection = db.collection('database');
     
     const uniqueId = event.queryStringParameters.id;
-    const random = event.queryStringParameters.random;
     
     let data;
-
-    // Fetching a single product by ID
     if (uniqueId) {
+      const { ObjectId } = require('mongodb'); 
       data = await collection.find({ "_id": new ObjectId(uniqueId) }).toArray();
-    } 
-    // Fetching a random set of products
-    else if (random) {
-      const randomCount = parseInt(random);
-      data = await collection.aggregate([{ $sample: { size: randomCount }}]).toArray();
-    } 
-    // Fetching all products
-    else {
+    } else {
       data = await collection.find({}).toArray();
     }
 

@@ -61,12 +61,12 @@ $(document).on('scroll', function() {
   if ($(window).scrollTop() > 50) {
       $('.transparent-nav').addClass('navbar-scrolled');
       $('.cart-icon').removeClass('cart-icon-white').addClass('cart-icon-black');
-      $('.navbar-toggler-icon').removeClass('navbar-toggler-icon-inverted');
+      $('.navbar-toggler').addClass('navbar-toggler-scrolled');
       $('.navbar-background').addClass('navbar-bg'); // Updated line
   } else {
       $('.transparent-nav').removeClass('navbar-scrolled');
       $('.cart-icon').removeClass('cart-icon-black').addClass('cart-icon-white');
-      $('.navbar-toggler-icon').addClass('navbar-toggler-icon-inverted');
+      $('.navbar-toggler').removeClass('navbar-toggler-scrolled');
       $('.navbar-background').removeClass('navbar-bg'); // Updated line
   }
 });
@@ -282,4 +282,3 @@ function populateAllProductCards(products) {
 
 // Call the function to start the process
 fetchAndPopulateProducts();
-
