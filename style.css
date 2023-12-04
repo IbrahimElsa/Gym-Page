@@ -220,7 +220,7 @@ body {
         font-size: 0.8rem;
     }
     .cart-wrapper {
-        margin-right: -1.5rem; /* Increase the margin-right to move the cart picture to the right */
+        margin-right: -1.5rem;
     }
     .card-container {
         margin-bottom: 3rem;
