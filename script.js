@@ -16,7 +16,21 @@ async function fetchProductDetails(productIds) {
   }
   return productDetails;
 }
-
+// Makes the navbar transparent/white on scroll
+$(document).on('scroll', function() {
+    if ($(window).scrollTop() > 50) {
+        $('.transparent-nav').addClass('navbar-scrolled');
+        $('.cart-icon').removeClass('cart-icon-white').addClass('cart-icon-black');
+        $('.navbar-toggler').addClass('navbar-toggler-scrolled');
+        $('.navbar-background').addClass('navbar-bg');
+    } else {
+        $('.transparent-nav').removeClass('navbar-scrolled');
+        $('.cart-icon').removeClass('cart-icon-black').addClass('cart-icon-white');
+        $('.navbar-toggler').removeClass('navbar-toggler-scrolled');
+        $('.navbar-background').removeClass('navbar-bg');
+    }
+  });
+  
 // Function to populate product details on index.html
 function populateProductDetails() {
   const cards = document.querySelectorAll('.card[data-product-id]');
