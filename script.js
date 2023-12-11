@@ -65,21 +65,22 @@ async function fetchAndPopulateProducts() {
 }
 
 function populateAllProductCards(products) {
-  const productsRow = document.getElementById('productsRow');
-  productsRow.innerHTML = ''; // Clear existing content
+    const productsRow = document.getElementById('productsRow');
+    productsRow.innerHTML = ''; // Clear existing content
 
-  products.forEach(product => {
-      productsRow.innerHTML += `
-          <div class="col-6 col-sm-4 col-md-3 card-container mb-5">
-              <div class="card mb-4 h-100" data-product-id="${product._id}" onclick="window.location.href='product.html?id=${product._id}'">
-                  <img class="card-img-top img-fluid" src="${product.Images.split(';')[0].trim()}" alt="Product Image">
-                  <h3 class="card-title text-center">${product.Name}</h3>
-                  <p class="card-text text-center">Price: $${product.Price.toFixed(2)}</p>
-              </div>
-          </div>
-      `;
-  });
+    products.forEach(product => {
+        productsRow.innerHTML += `
+            <div class="col-6 col-sm-4 col-md-3 mb-5">
+                <div class="card mb-4 h-100" data-product-id="${product._id}" onclick="window.location.href='product.html?id=${product._id}'">
+                    <img class="card-img-top img-fluid" src="${product.Images.split(';')[0].trim()}" alt="Product Image">
+                </div>
+                <h3 class="card-title text-center">${product.Name}</h3>
+                <p class="card-text text-center">Price: $${product.Price.toFixed(2)}</p>
+            </div>
+        `;
+    });
 }
+
 
 
 // Function to randomly select a specified number of products
