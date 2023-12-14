@@ -63,11 +63,11 @@ AOS.init({
   function renderCart() {
     const cartItemsDiv = document.getElementById('cart-items');
     cartItemsDiv.innerHTML = '';  // Clear existing items
-  
+
     const cartItems = getCartItems();
     cartItems.forEach((item, index) => {
-        const productDetails = fetchedProductDetails[item.id];
-        if (productDetails) {
+        if (fetchedProductDetails[item.id]) {
+            const productDetails = fetchedProductDetails[item.id];
             cartItemsDiv.innerHTML += `
             <div class="product-container d-flex align-items-center">
                 <div class="product-img-container img-card">
@@ -77,14 +77,14 @@ AOS.init({
                 </div>
                 <div class="product-info ml-3">
                     <div>${productDetails.Name}</div>
-                    <div>${capitalizeFirstLetter(item.color)} | ${capitalizeFirstLetter(item.size)}</div>
+                    <div>${item.color} | ${item.size}</div>
                     <div>$${productDetails.Price}</div>
                 </div>
                 <i class="bi bi-x-lg ml-auto" onclick="removeFromCart(${index})" style="cursor:pointer;"></i>
             </div>`;
         }
     });
-  }
+}
   
   // Function to toggle the slide-in cart
   async function toggleCart() {
@@ -154,35 +154,47 @@ AOS.init({
     updateCartCount();
   }
   
-  async function fetchAndDisplayItemsYouMayLike() {
+  function getRandomProducts(products, num) {
+    const shuffled = products.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+}
+
+async function fetchAndDisplayItemsYouMayLike() {
     try {
         const response = await fetch('https://rossthesloth-gym.netlify.app/.netlify/functions/get_product');
         const products = await response.json();
-        const selectedProducts = getRandomProducts(products, 4); // Select 4 random products
-        displayItemsYouMayLike(selectedProducts);
+        if (products && products.length > 0) {
+            const selectedProducts = getRandomProducts(products, 4); // Select 4 random products
+            displayItemsYouMayLike(selectedProducts);
+        } else {
+            console.error("No products found for 'Items You May Like'.");
+        }
     } catch (err) {
         console.error("Error fetching products for 'Items You May Like':", err);
     }
 }
 
+
 function displayItemsYouMayLike(products) {
-    const container = document.querySelector('.items-you-may-like .row');
-    if (!container) return; // Exit if the container is not found
+  const container = document.querySelector('.items-you-may-like .row');
+  if (!container) return; // Exit if the container is not found
 
-    container.innerHTML = ''; // Clear existing content
+  container.innerHTML = ''; // Clear existing content
 
-    products.forEach(product => {
-        container.innerHTML += `
-            <div class="col-6 col-md-3 card-container mb-5">
-                <div class="card mb-4 h-100" data-product-id="${product._id}" onclick="window.location.href='product.html?id=${product._id}'">
-                    <img class="card-img-top img-fluid" src="${product.Images.split(';')[0].trim()}" alt="${product.Name}">
-                    <h3 class="card-title text-center">${product.Name}</h3>
-                    <p class="card-text text-center">Price: $${product.Price.toFixed(2)}</p>
-                </div>
-            </div>
-        `;
-    });
+  products.forEach(product => {
+      container.innerHTML += `
+          <div class="col-6 col-md-3 card-container mb-5">
+              <div class="card mb-4 h-100" data-product-id="${product._id}" onclick="window.location.href='product.html?id=${product._id}'">
+                  <img class="card-img-top img-fluid" src="${product.Images.split(';')[0].trim()}" alt="${product.Name}">
+              </div>
+              <h3 class="card-title text-center">${product.Name}</h3>
+              <p class="card-text text-center">Price: $${product.Price.toFixed(2)}</p>
+          </div>
+      `;
+  });
 }
+
+
 
 $(document).ready(function(){
   // Initialize cart count
