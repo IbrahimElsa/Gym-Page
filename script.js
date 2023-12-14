@@ -184,71 +184,76 @@ function displayItemsYouMayLike(products) {
     });
 }
 
-  $(document).ready(function(){
-    // Initialize cart count
-    updateCartCount();
-  
-    // Populate product details dynamically
-    populateProductDetails();
-  
-    // Attach event listeners related to the cart
-    document.querySelector('.cart').addEventListener('click', toggleCart);
-    document.getElementById('close-cart').addEventListener('click', toggleCart);
-    document.getElementById('cart-backdrop').addEventListener('click', toggleCart);
-    document.getElementById('cart-count').addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent the parent (cart icon) event from firing again
-        toggleCart();
-    });
-    $("#mainImage").click(function(){
-        let imgSrc = $(this).attr("src");
-        $("#popupImage").attr("src", imgSrc);
-    });
-  
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-  
-    const addToCartButton = document.getElementById('addToCartButton');
-    if (addToCartButton) {
-        addToCartButton.addEventListener('click', function() {
-            const product = {
-                id: productId,
-                name: 'Product Name based on productId',
-                price: 10
-            };
-    
-            addToCart(product);
-    
-            // Position the popup beneath the cart icon
-            const cartIcon = document.querySelector('.cart');
-            const rect = cartIcon.getBoundingClientRect();
-            const popup = document.getElementById('cartAddedPopup');
-            popup.style.top = (rect.bottom + window.scrollY) + 'px';
-            popup.style.right = (window.innerWidth - rect.right) + 'px';
-    
-            // Show the popup
-            $('#cartAddedPopup').show();
-    
-            setTimeout(function() {
-                $('#cartAddedPopup').hide();
-            }, 2000);
-        });
-    }
-    if (window.location.href.includes('items.html')) {
-      populateAllProductCards();
-  }
+$(document).ready(function(){
+  // Initialize cart count
+  updateCartCount();
+
+  // Populate product details dynamically
+  populateProductDetails();
+
+  // Attach event listeners related to the cart
+  document.querySelector('.cart').addEventListener('click', toggleCart);
+  document.getElementById('close-cart').addEventListener('click', toggleCart);
+  document.getElementById('cart-backdrop').addEventListener('click', toggleCart);
+  document.getElementById('cart-count').addEventListener('click', function(event) {
+      event.stopPropagation(); // Prevent the parent (cart icon) event from firing again
+      toggleCart();
   });
+  $("#mainImage").click(function(){
+      let imgSrc = $(this).attr("src");
+      $("#popupImage").attr("src", imgSrc);
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get('id');
+
+  const addToCartButton = document.getElementById('addToCartButton');
+  if (addToCartButton) {
+      addToCartButton.addEventListener('click', function() {
+          const product = {
+              id: productId,
+              name: 'Product Name based on productId',
+              price: 10
+          };
   
-  async function fetchAndPopulateProducts() {
-    try {
-        const response = await fetch('https://rossthesloth-gym.netlify.app/.netlify/functions/get_product');
-        const products = await response.json();
-        
-        populateAllProductCards(products);
+          addToCart(product);
   
-    } catch (err) {
-        console.error("Error fetching and populating products:", err);
-    }
+          // Position the popup beneath the cart icon
+          const cartIcon = document.querySelector('.cart');
+          const rect = cartIcon.getBoundingClientRect();
+          const popup = document.getElementById('cartAddedPopup');
+          popup.style.top = (rect.bottom + window.scrollY) + 'px';
+          popup.style.right = (window.innerWidth - rect.right) + 'px';
+  
+          // Show the popup
+          $('#cartAddedPopup').show();
+  
+          setTimeout(function() {
+              $('#cartAddedPopup').hide();
+          }, 2000);
+      });
   }
+  
+  // Check if on items page and populate all products
+  if (window.location.href.includes('items.html')) {
+      fetchAndPopulateProducts();
+  }
+
+  // Check if on product page and populate 'Items You May Like'
+  if (window.location.href.includes('product.html')) {
+      fetchAndDisplayItemsYouMayLike();
+  }
+});
+  
+async function fetchAndPopulateProducts() {
+  try {
+      const response = await fetch('https://rossthesloth-gym.netlify.app/.netlify/functions/get_product');
+      const products = await response.json();
+      populateAllProductCards(products);
+  } catch (err) {
+      console.error("Error fetching and populating products:", err);
+  }
+}
   
   function populateAllProductCards(products) {
     const productsRow = document.getElementById('productsRow');
