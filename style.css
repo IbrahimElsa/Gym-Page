@@ -544,3 +544,80 @@ body {
     right: 0;
     bottom: 0;
 }
+.faq-accordion .card {
+    border: none;
+    background: none;
+}
+
+.faq-accordion .card-header {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.faq-accordion .card-header button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    color: #007bff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    padding: 0.75rem 1.25rem;
+}
+
+.faq-accordion .card-header button.collapsed {
+    color: #007bff;
+}
+
+.faq-accordion .card-header button:not(.collapsed) {
+    color: #000;
+    background: #f8f9fa;
+}
+
+.faq-accordion .card-body {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid #e3e6f0;
+}
+
+.faq-accordion h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.faq-accordion .card:not(:first-of-type) {
+    margin-top: 2rem;
+}
+
+.faq-links a {
+    display: block;
+    color: #007bff;
+    padding: 0.5rem 0;
+    text-decoration: none;
+}
+
+.faq-links a:hover {
+    text-decoration: underline;
+}
+
+.faq-links a.active {
+    border-left: 4px solid #007bff;
+    padding-left: calc(0.5rem - 4px);
+}
+
+@media (max-width: 767px) {
+    .faq-accordion .card-header button {
+        padding: 0.5rem 1rem;
+    }
+
+    .faq-accordion .card-body {
+        padding: 0.5rem 1rem;
+    }
+
+    .faq-accordion h2 {
+        font-size: 1rem;
+    }
+}
