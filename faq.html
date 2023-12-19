@@ -66,46 +66,170 @@
         <div class="row">
             <!-- Left Column for FAQ Categories -->
             <div class="col-md-4">
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-shipping-tab" data-toggle="pill" href="#v-pills-shipping" role="tab" aria-controls="v-pills-shipping" aria-selected="true">Shipping Questions</a>
-                    <a class="nav-link" id="v-pills-ordering-tab" data-toggle="pill" href="#v-pills-ordering" role="tab" aria-controls="v-pills-ordering" aria-selected="false">Ordering Questions</a>
-                    <!-- Add more categories as necessary -->
+                <div class="list-group" id="faq-categories">
+                    <a href="#shippingQuestions" class="list-group-item list-group-item-action active" data-bs-toggle="list">Shipping Questions</a>
+                    <a href="#orderingQuestions" class="list-group-item list-group-item-action" data-bs-toggle="list">Ordering Questions</a>
+                    <a href="#returnExchangeQuestions" class="list-group-item list-group-item-action" data-bs-toggle="list">Return & Exchange Questions</a>
+                    <a href="#generalQuestions" class="list-group-item list-group-item-action" data-bs-toggle="list">General Questions</a>
+                    <a href="#productQuestions" class="list-group-item list-group-item-action" data-bs-toggle="list">Product Questions</a>
                 </div>
             </div>
     
             <!-- Right Column for FAQ Questions and Answers -->
             <div class="col-md-8">
-                <div class="tab-content" id="v-pills-tabContent">
-                    <!-- Shipping Questions Content -->
-                    <div class="tab-pane fade show active" id="v-pills-shipping" role="tabpanel" aria-labelledby="v-pills-shipping-tab">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="shippingQuestions">
                         <div class="accordion" id="accordionShipping">
-                            <!-- Collapsible for each shipping question -->
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            How much is shipping?
-                                        </button>
-                                    </h5>
-                                </div>
-    
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionShipping">
-                                    <div class="card-body">
-                                        Shipping costs vary depending on the destination and the size of your order.
+                            <!-- Question 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="shippingHeadingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#shippingCollapseOne" aria-expanded="true" aria-controls="shippingCollapseOne">
+                                        How much is shipping?
+                                    </button>
+                                </h2>
+                                <div id="shippingCollapseOne" class="accordion-collapse collapse show" aria-labelledby="shippingHeadingOne">
+                                    <div class="accordion-body">
+                                        UNITED STATES: Free standard shipping on U.S. order over $75, expedited shipping options will be shown at checkout.<br>
+                                        CANADA: Free standard shipping on Canada orders over $200 USD, expedited shipping will be shown at checkout.<br>
+                                        INTERNATIONAL: Shipping prices will be reflected at checkout depending on the shipping destination and weight of your order. At this time we do not offer free shipping for international orders.
+                                        *Free shipping is applied after discounts and before taxes.
                                     </div>
                                 </div>
                             </div>
-                            <!-- Repeat for other shipping questions -->
+                    
+                            <!-- Question 2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="shippingHeadingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shippingCollapseTwo" aria-expanded="false" aria-controls="shippingCollapseTwo">
+                                        How quickly do you process and ship your orders?
+                                    </button>
+                                </h2>
+                                <div id="shippingCollapseTwo" class="accordion-collapse collapse" aria-labelledby="shippingHeadingTwo">
+                                    <div class="accordion-body">
+                                        We take pride in our shipping speed. 90% of all orders are shipped out within 1-2 business days! We do not ship orders over the weekends. Any orders placed on the weekends or the holidays will be shipped on the following business day.
+                                        During peak sale season, restocks, and new drops the delivery of your package(s) may take a little longer. Thank you for your patience.<br><br>
+                                        The cut-off time for same day shipping for Second Day, Overnight Orders, UPS expedited, and DHL Worldwide Express is 2PM EST. Any orders placed after that time will be shipped the following business day. Please keep in mind that weekends are not working days.
+                                        Orders are subject to verification and approval before shipping.<br><br> If inaccurate or incomplete information was provided, this may cause a delay in processing and shipping your order.
+                                        If an item(s) is out of stock, this may cause a delay in processing and shipping your order. Rest assured that you will be notified via email or phone about any changes associated to your order.
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Question 3 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="shippingHeadingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shippingCollapseThree" aria-expanded="false" aria-controls="shippingCollapseThree">
+                                        How can I track my order status?
+                                    </button>
+                                </h2>
+                                <div id="shippingCollapseThree" class="accordion-collapse collapse" aria-labelledby="shippingHeadingThree">
+                                    <div class="accordion-body">
+                                        Once an order is placed, an email will be sent to each customer with the tracking number and 
+                                        instructions on how to track the order after your order has been shipped.
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Question 4 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="shippingHeadingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shippingCollapseFour" aria-expanded="false" aria-controls="shippingCollapseFour">
+                                        How long will it take for my order to arrive?
+                                    </button>
+                                </h2>
+                                <div id="shippingCollapseFour" class="accordion-collapse collapse" aria-labelledby="shippingHeadingFour">
+                                    <div class="accordion-body">
+                                        Next Day Shipping - 1 Business Day<br>
+
+                                        2nd Day Shipping - 2 Business Days<br>
+                                        
+                                        Expedited Shipping - 2-3 Business Days<br>
+                                        
+                                        Standard Shipping - 4-5 Business Days<br>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Question 5 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="shippingHeadingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shippingCollapseFive" aria-expanded="false" aria-controls="shippingCollapseFive">
+                                        Do International orders have to pay custom fees?
+                                    </button>
+                                </h2>
+                                <div id="shippingCollapseFive" class="accordion-collapse collapse" aria-labelledby="shippingHeadingFive">
+                                    <div class="accordion-body">
+                                        We unfortunately have no control over custom fees 
+                                        and they vary from country to country. Customers would be responsible for paying all customs fees. 
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Question 6 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="shippingHeadingSix">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shippingCollapseSix" aria-expanded="false" aria-controls="shippingCollapseSix">
+                                        What shipping carriers do you use?
+                                    </button>
+                                </h2>
+                                <div id="shippingCollapseSix" class="accordion-collapse collapse" aria-labelledby="shippingHeadingSix">
+                                    <div class="accordion-body">
+                                        We mainly use USPS and UPS for domestic shipments and offer a few options for international 
+                                        customers which can all be seen when choosing your shipping option at checkout
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+    
                     <!-- Ordering Questions Content -->
-                    <div class="tab-pane fade" id="v-pills-ordering" role="tabpanel" aria-labelledby="v-pills-ordering-tab">
+                    <div class="tab-pane fade" id="orderingQuestions">
                         <div class="accordion" id="accordionOrdering">
-                            <!-- Collapsible for each ordering question -->
-                            <!-- Add ordering questions similar to the shipping questions -->
+                            <!-- Individual Ordering Questions -->
+                            <!-- Question 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="orderingHeadingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#orderingCollapseOne" aria-expanded="true" aria-controls="orderingCollapseOne">
+                                        Is your ordering system secure?
+                                    </button>
+                                </h2>
+                                <div id="orderingCollapseOne" class="accordion-collapse collapse show" aria-labelledby="orderingHeadingOne">
+                                    <div class="accordion-body">
+                                        Yes, our ordering system is secure. [Additional details about security measures]
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add more ordering questions here -->
+                            <!-- ... -->
                         </div>
                     </div>
-                    <!-- More tabs for other categories -->
+    
+                    <!-- Return & Exchange Questions Content -->
+                    <div class="tab-pane fade" id="returnExchangeQuestions">
+                        <div class="accordion" id="accordionReturnExchange">
+                            <!-- Individual Return & Exchange Questions -->
+                            <!-- Question 1 -->
+                            <!-- ... -->
+                        </div>
+                    </div>
+    
+                    <!-- General Questions Content -->
+                    <div class="tab-pane fade" id="generalQuestions">
+                        <div class="accordion" id="accordionGeneral">
+                            <!-- Individual General Questions -->
+                            <!-- Question 1 -->
+                            <!-- ... -->
+                        </div>
+                    </div>
+    
+                    <!-- Product Questions Content -->
+                    <div class="tab-pane fade" id="productQuestions">
+                        <div class="accordion" id="accordionProduct">
+                            <!-- Individual Product Questions -->
+                            <!-- Question 1 -->
+                            <!-- ... -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
