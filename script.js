@@ -269,6 +269,7 @@ async function fetchAndPopulateProducts() {
   
   function populateAllProductCards(products) {
     const productsRow = document.getElementById('productsRow');
+    productsRow.innerHTML = '';
   
     products.forEach(product => {
         const cardContainer = document.createElement('div');
