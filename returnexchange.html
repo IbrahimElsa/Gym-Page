@@ -16,3 +16,154 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css">
 
 </head>
+<body class="d-flex flex-column min-vh-100 pt-5 mt-5">
+    <header>
+        <nav class="navbar navbar-expand-md pt-0 fixed-top bg-white">
+            <div class="container-fluid">
+                <div class="row align-items-center w-100">
+    
+                    <!-- Navbar toggler -->
+                    <div class="col-4 d-md-none d-flex justify-content-start">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+    
+                    <!-- Menu Items -->
+                    <div class="col-12 col-md-4 collapse navbar-collapse bg-white" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Featured Products Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-txt nav-link fs-5" href="items.html" id="featuredDropdown" role="button">
+                                    Products
+                                </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-txt nav-link fs-5" href="aboutus.html">About Us</a></li>
+                            <li class="nav-item"><a class="nav-txt nav-link fs-5" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+    
+                    <!-- Logo in the center -->
+                    <div class="col-4 col-md-4 text-center">
+                        <a class="navbar-brand mx-auto" href="index.html">
+                            <img src="pictures/logo_nobg_small.png" id="logo" alt="Fitness Equipment Store Logo">
+                        </a>
+                    </div>
+    
+                    <!-- Cart on the right -->
+                    <div class="col-4 col-md-4 text-end d-flex justify-content-end">
+                        <a href="#shopping-cart" class="order-md-5 position-relative cart-wrapper">
+                            <i class="cart bi bi-cart3 fs-5 cart-icon text-black"></i>
+                            <div class="position-absolute end-0 bottom-0 bg-primary-subtle text-dark rounded-circle p-1 cart-bubble text-center" id="cart-count">0</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="return-exchange-policy">
+        <div class="container my-5">
+            <h2 class="text-center mb-4">Return and Exchange Policy</h2>
+            <p>At Fitness Equipment Store, we strive to ensure you are completely satisfied with your purchase. If, however, you are not entirely pleased with your products, our return and exchange policy is as follows:</p>
+    
+            <h3>Returns</h3>
+            <ul>
+                <li>You can return your item within 30 days of receipt for a full refund or exchange.</li>
+                <li>Items must be in original condition, unused, and with the original packaging.</li>
+                <li>Refunds will be processed to the original method of payment within 7-10 business days of receiving the returned item.</li>
+                <li>Please note that return shipping costs are the responsibility of the customer unless the item is defective or incorrect.</li>
+            </ul>
+    
+            <h3>Exchanges</h3>
+            <ul>
+                <li>If you wish to exchange an item, please return the original item and place a new order.</li>
+                <li>You will be refunded for the original item as per our return policy.</li>
+                <li>Exchange is subject to stock availability.</li>
+            </ul>
+    
+            <h3>Defective or Incorrect Items</h3>
+            <p>If you received a defective or incorrect item, please contact us immediately at [Customer Service Email/Phone Number], and we will arrange for a replacement.</p>
+    
+            <h3>Additional Information</h3>
+            <p>For any other queries regarding returns and exchanges, please contact our customer service team.</p>
+        </div>
+    </section>
+
+    <footer class="mt-auto fixed-bottom">
+        <div class="container p-4">
+            <div class="row">
+              <div class="col-lg-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Footer Menu</h5>
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="contact.html" class="text-dark">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="faq.html" class="text-dark">FAQ</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-dark">Returns and Exchange</a>
+                  </li>
+                </ul>
+              </div>
+        
+              <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Newsletter</h5>
+        
+                <form action="" netlify>
+                  <div class="form-outline mb-4">
+                    <input type="email" id="form5Example2" class="form-control" placeholder="Enter your email address"/>
+                  </div>
+        
+                  <button type="submit" class="btn btn-primary mb-4">Subscribe</button>
+        
+                  <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Fitness Equipment Store
+          </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+        <script src="script.js"></script>
+        <script src="dynamicRouting.js"></script>
+
+
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content d-flex justify-content-center align-items-center">
+                    <div class="modal-body d-flex justify-content-center align-items-center">
+                        <img src="" id="popupImage" class="img-fluid" alt="Zoomed Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="cart-backdrop"></div>
+
+
+        <!-- Slide-in Cart -->
+        <div id="slide-in-cart" class="slide-in-cart d-flex flex-column">
+            <div class="cart-header">
+                <span>Your Cart</span>
+                <button id="close-cart" class="close-cart">&times;</button>
+            </div>
+            <div id="cart-items" class="cart-items flex-grow-1">
+                <!-- Cart items will be inserted here -->
+            </div>
+            <div class="d-flex justify-content-center w-100 mt-2 mb-3">
+                <button class="btn btn-primary view-cart-button" onclick="window.location.href='checkout.html'">View Cart</button>
+            </div>
+        </div>
+        
+        <div id="cartAddedPopup" class="cart-popup position-absolute p-3 bg-white rounded shadow text-center">
+            <p><i class="bi bi-bag-check"></i> Item added to cart!</p>
+        </div>
+    </body>
